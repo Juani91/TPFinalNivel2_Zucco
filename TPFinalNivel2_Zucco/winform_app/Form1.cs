@@ -1,4 +1,5 @@
-﻿using System;
+﻿using negocio;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,11 +11,17 @@ using System.Windows.Forms;
 
 namespace winform_app
 {
-    public partial class Form1 : Form
+    public partial class frmArticulos : Form
     {
-        public Form1()
+        public frmArticulos()
         {
             InitializeComponent();
+        }
+
+        private void frmArticulos_Load(object sender, EventArgs e)
+        {
+            ArticuloNegocio negocio = new ArticuloNegocio();
+            dgvArticulos.DataSource = negocio.listar();
         }
     }
 }

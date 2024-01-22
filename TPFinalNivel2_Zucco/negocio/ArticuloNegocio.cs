@@ -16,7 +16,7 @@ namespace negocio
 
             try
             {
-                datos.setearConsulta("select Id, Codigo, Nombre, Descripcion, Precio from ARTICULOS");
+                datos.setearConsulta("select Id, Codigo, Nombre, Descripcion from ARTICULOS");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
@@ -24,10 +24,13 @@ namespace negocio
                     Articulo art = new Articulo();
 
                     art.Id = (int)datos.Lector["Id"];
-                    art.Codigo = (int)datos.Lector["Codigo"];
+                    art.Codigo = (string)datos.Lector["Codigo"];
                     art.Nombre = (string)datos.Lector["Nombre"];
                     art.Descripcion = (string)datos.Lector["Descripcion"];
-                    art.Precio = (int)datos.Lector["Precio"];
+
+                    //art.Precio = (int)datos.Lector["Precio"]; VER TIPO DE DATO !!!
+
+                    lista.Add(art);
                 }
                 
                 return lista;

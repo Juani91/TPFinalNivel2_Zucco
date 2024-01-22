@@ -43,8 +43,6 @@ namespace negocio
             }
         }
 
-        // FALTA EL WHILE..
-
         public void cerrarConexion()
         {
             if(lector != null)
