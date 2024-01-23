@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,7 +17,7 @@ namespace negocio
 
             try
             {
-                datos.setearConsulta("select Id, Codigo, Nombre, Descripcion from ARTICULOS");
+                datos.setearConsulta("select Id, Codigo, Nombre, Descripcion, Precio, ImagenUrl from ARTICULOS");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
@@ -27,8 +28,8 @@ namespace negocio
                     art.Codigo = (string)datos.Lector["Codigo"];
                     art.Nombre = (string)datos.Lector["Nombre"];
                     art.Descripcion = (string)datos.Lector["Descripcion"];
-
-                    //art.Precio = (int)datos.Lector["Precio"]; VER TIPO DE DATO !!!
+                    art.Precio = (decimal)datos.Lector["Precio"];
+                    art.ImagenUrl = (string)datos.Lector["ImagenUrl"];
 
                     lista.Add(art);
                 }
