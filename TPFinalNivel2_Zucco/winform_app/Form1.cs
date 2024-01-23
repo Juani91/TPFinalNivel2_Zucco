@@ -25,6 +25,7 @@ namespace winform_app
             ArticuloNegocio negocio = new ArticuloNegocio();
             listaArticulos = negocio.listar();
             dgvArticulos.DataSource = listaArticulos;
+            dgvArticulos.Columns["ImagenUrl"].Visible = false;
             cargarImagen(listaArticulos[0].ImagenUrl);
         }
 

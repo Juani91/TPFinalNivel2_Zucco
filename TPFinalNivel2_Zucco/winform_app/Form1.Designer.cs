@@ -59,7 +59,10 @@
             this.ClientSize = new System.Drawing.Size(1147, 464);
             this.Controls.Add(this.pbxArticulo);
             this.Controls.Add(this.dgvArticulos);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "frmArticulos";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TP FINAL ARTICULOS - ZUCCO";
             this.Load += new System.EventHandler(this.frmArticulos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).EndInit();
