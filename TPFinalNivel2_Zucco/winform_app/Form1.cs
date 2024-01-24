@@ -41,10 +41,16 @@ namespace winform_app
             {
                 pbxArticulo.Load(imagen);
             }
-            catch(Exception ex)
+            catch
             {
                 pbxArticulo.Load("https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg");
             }
+        }
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            frmAgregarArticulo alta = new frmAgregarArticulo();
+            alta.ShowDialog();
         }
     }
 }
