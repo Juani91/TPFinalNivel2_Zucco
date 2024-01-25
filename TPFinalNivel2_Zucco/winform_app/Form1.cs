@@ -52,5 +52,7 @@ namespace winform_app
             frmAgregarArticulo alta = new frmAgregarArticulo();
             alta.ShowDialog();
         }
+
+
     }
 }

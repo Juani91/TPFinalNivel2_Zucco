@@ -31,14 +31,33 @@ namespace winform_app
 
             try
             {
-                artic.Codigo = txtCodigo.Text;
+                artic.Codigo = txtCodigo.Text;                
                 artic.Nombre = txtModelo.Text;
                 artic.Descripcion = txtDescripcion.Text;
                 artic.Precio = decimal.Parse(txtPrecio.Text);
+                artic.Marca = (Marca)cboMarca.SelectedItem;
+                artic.Categoria = (Categoria)cboCategoria.SelectedItem;
+                
 
                 negocio.agregar(artic);
                 MessageBox.Show("Artículo agregado exitosamente!");
                 Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void frmAgregarArticulo_Load(object sender, EventArgs e)
+        {
+            MarcaNegocio marca = new MarcaNegocio();
+            CategoriaNegocio categoria = new CategoriaNegocio();
+
+            try
+            {
+                cboMarca.DataSource = marca.listar();
+                cboCategoria.DataSource = categoria.listar();
             }
             catch (Exception ex)
             {
