@@ -29,7 +29,10 @@ namespace negocio
                     art.Nombre = (string)datos.Lector["Nombre"];
                     art.Descripcion = (string)datos.Lector["Descripcion"];
                     art.Precio = (decimal)datos.Lector["Precio"];
-                    art.ImagenUrl = (string)datos.Lector["ImagenUrl"];
+
+                    if (!(datos.Lector["ImagenUrl"] is DBNull))
+                        art.ImagenUrl = (string)datos.Lector["ImagenUrl"];
+
                     art.Marca = new Marca();
                     art.Marca.Descripcion = (string)datos.Lector["Marca"];
                     art.Categoria = new Categoria();

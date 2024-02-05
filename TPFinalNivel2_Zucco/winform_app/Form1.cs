@@ -19,14 +19,25 @@ namespace winform_app
         {
             InitializeComponent();
         }
+        private void cargar()
+        {
+            ArticuloNegocio negocio = new ArticuloNegocio();
+            try
+            {
+                listaArticulos = negocio.listar();
+                dgvArticulos.DataSource = listaArticulos;
+                dgvArticulos.Columns["ImagenUrl"].Visible = false;
+                cargarImagen(listaArticulos[0].ImagenUrl);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
 
         private void frmArticulos_Load(object sender, EventArgs e)
         {
-            ArticuloNegocio negocio = new ArticuloNegocio();
-            listaArticulos = negocio.listar();
-            dgvArticulos.DataSource = listaArticulos;
-            dgvArticulos.Columns["ImagenUrl"].Visible = false;
-            cargarImagen(listaArticulos[0].ImagenUrl);
+            cargar();
         }
 
         private void dgvArticulos_SelectionChanged(object sender, EventArgs e)
@@ -51,8 +62,7 @@ namespace winform_app
         {
             frmAgregarArticulo alta = new frmAgregarArticulo();
             alta.ShowDialog();
-        }
-
-
+            cargar();
+        }        
     }
 }
