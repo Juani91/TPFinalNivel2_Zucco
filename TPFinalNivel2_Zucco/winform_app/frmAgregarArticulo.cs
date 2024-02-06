@@ -37,7 +37,7 @@ namespace winform_app
                 artic.Precio = decimal.Parse(txtPrecio.Text);
                 artic.Marca = (Marca)cboMarca.SelectedItem;
                 artic.Categoria = (Categoria)cboCategoria.SelectedItem;
-                
+                artic.ImagenUrl = txtImagenUrl.Text;                
 
                 negocio.agregar(artic);
                 MessageBox.Show("Artículo agregado exitosamente!");
@@ -63,6 +63,23 @@ namespace winform_app
             {
                 MessageBox.Show(ex.ToString());
             }
+        }
+
+        private void cargarImagen(string imagen)
+        {
+            try
+            {
+                pbxArticulo.Load(imagen);
+            }
+            catch
+            {
+                pbxArticulo.Load("https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg");
+            }
+        }
+
+        private void txtImagenUrl_TextChanged(object sender, EventArgs e)
+        {
+            cargarImagen(txtImagenUrl.Text);
         }
     }
 }
