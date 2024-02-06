@@ -19,6 +19,7 @@ namespace winform_app
         {
             InitializeComponent();
         }
+
         private void cargar()
         {
             ArticuloNegocio negocio = new ArticuloNegocio();
@@ -63,6 +64,16 @@ namespace winform_app
             frmAgregarArticulo alta = new frmAgregarArticulo();
             alta.ShowDialog();
             cargar();
-        }        
+        }
+
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            Articulo seleccionado;
+            seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+
+            frmAgregarArticulo modificar = new frmAgregarArticulo(seleccionado);
+            modificar.ShowDialog();
+            cargar();
+        }
     }
 }

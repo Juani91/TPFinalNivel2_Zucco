@@ -97,20 +97,21 @@
             // btnAgregar
             // 
             this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(180, 22);
+            this.btnAgregar.Size = new System.Drawing.Size(180, 26);
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // btnModificar
             // 
             this.btnModificar.Name = "btnModificar";
-            this.btnModificar.Size = new System.Drawing.Size(180, 22);
+            this.btnModificar.Size = new System.Drawing.Size(180, 26);
             this.btnModificar.Text = "Modificar";
+            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
             // btnEliminar
             // 
             this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(180, 22);
+            this.btnEliminar.Size = new System.Drawing.Size(180, 26);
             this.btnEliminar.Text = "Eliminar";
             // 
             // buscarToolStripMenuItem
@@ -118,13 +119,13 @@
             this.buscarToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.búsquedaAvanzadaToolStripMenuItem});
             this.buscarToolStripMenuItem.Name = "buscarToolStripMenuItem";
-            this.buscarToolStripMenuItem.Size = new System.Drawing.Size(58, 21);
+            this.buscarToolStripMenuItem.Size = new System.Drawing.Size(68, 25);
             this.buscarToolStripMenuItem.Text = "Buscar";
             // 
             // búsquedaAvanzadaToolStripMenuItem
             // 
             this.búsquedaAvanzadaToolStripMenuItem.Name = "búsquedaAvanzadaToolStripMenuItem";
-            this.búsquedaAvanzadaToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
+            this.búsquedaAvanzadaToolStripMenuItem.Size = new System.Drawing.Size(219, 26);
             this.búsquedaAvanzadaToolStripMenuItem.Text = "Búsqueda Avanzada";
             // 
             // menuStrip1
