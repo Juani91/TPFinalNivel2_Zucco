@@ -25,7 +25,5 @@ namespace dominio
 
         [DisplayName("Categoría")]
         public Categoria Categoria { get; set; }
-
-
     }
 }

@@ -35,7 +35,7 @@ namespace negocio
 
                     art.Marca = new Marca();
                     art.Marca.Id = (int)datos.Lector["IdMarca"];
-                    art.Marca.Descripcion = (string)datos.Lector["Marca"];                    
+                    art.Marca.Descripcion = (string)datos.Lector["Marca"];
                     art.Categoria = new Categoria();
                     art.Categoria.Id = (int)datos.Lector["IdCategoria"];
                     art.Categoria.Descripcion = (string)datos.Lector["Categoria"];
@@ -61,13 +61,14 @@ namespace negocio
             try
             {
                 datos.setearConsulta("insert into ARTICULOS (Codigo, Nombre, Descripcion, Precio, IdMarca, IdCategoria, ImagenUrl) values (@Codigo, @Nombre, @Descripcion, @Precio, @idMarca, @idCategoria, @ImagenUrl)");
-                datos.setearParametro("Codigo", nuevo.Codigo);
-                datos.setearParametro("Nombre", nuevo.Nombre);
-                datos.setearParametro("Descripcion", nuevo.Descripcion);
-                datos.setearParametro("Precio", nuevo.Precio);
-                datos.setearParametro("IdMarca", nuevo.Marca.Id);
-                datos.setearParametro("IdCategoria", nuevo.Categoria.Id);
-                datos.setearParametro("ImagenUrl", nuevo.ImagenUrl);
+                datos.setearParametro("@Codigo", nuevo.Codigo);
+                datos.setearParametro("@Nombre", nuevo.Nombre);
+                datos.setearParametro("@Descripcion", nuevo.Descripcion);
+                datos.setearParametro("@Precio", nuevo.Precio);
+                datos.setearParametro("@IdMarca", nuevo.Marca.Id);
+                datos.setearParametro("@IdCategoria", nuevo.Categoria.Id);
+                datos.setearParametro("@ImagenUrl", nuevo.ImagenUrl);
+
                 datos.ejecutarAccion();
             }
             catch (Exception ex)
@@ -78,12 +79,33 @@ namespace negocio
             {
                 datos.cerrarConexion();
             }
-
         }
 
         public void modificar(Articulo modificar)
         {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("update ARTICULOS set Codigo = @Codigo, Nombre = @Nombre, Descripcion = @Descripcion, IdMarca = @IdMarca, IdCategoria = @IdCategoria, ImagenUrl = @ImagenUrl, Precio = @Precio where Id = @Id");
+                datos.setearParametro("@Id", modificar.Id);
+                datos.setearParametro("@Codigo", modificar.Codigo);
+                datos.setearParametro("@Nombre", modificar.Nombre);
+                datos.setearParametro("@Descripcion", modificar.Descripcion);
+                datos.setearParametro("@Precio", modificar.Precio);
+                datos.setearParametro("@IdMarca", modificar.Marca.Id);
+                datos.setearParametro("@IdCategoria", modificar.Categoria.Id);
+                datos.setearParametro("@ImagenUrl", modificar.ImagenUrl);                
 
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
         }
     }
 }

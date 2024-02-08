@@ -35,21 +35,33 @@ namespace winform_app
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            Articulo artic = new Articulo();
+            // Articulo artic = new Articulo();
             ArticuloNegocio negocio = new ArticuloNegocio();
 
             try
             {
-                artic.Codigo = txtCodigo.Text;                
-                artic.Nombre = txtModelo.Text;
-                artic.Descripcion = txtDescripcion.Text;
-                artic.Precio = decimal.Parse(txtPrecio.Text);
-                artic.Marca = (Marca)cboMarca.SelectedItem;
-                artic.Categoria = (Categoria)cboCategoria.SelectedItem;
-                artic.ImagenUrl = txtImagenUrl.Text;                
+                if(articulo == null)
+                    articulo = new Articulo();
 
-                negocio.agregar(artic);
-                MessageBox.Show("Artículo agregado exitosamente!");
+                articulo.Codigo = txtCodigo.Text;
+                articulo.Nombre = txtModelo.Text;
+                articulo.Descripcion = txtDescripcion.Text;
+                articulo.Precio = decimal.Parse(txtPrecio.Text);
+                articulo.Marca = (Marca)cboMarca.SelectedItem;
+                articulo.Categoria = (Categoria)cboCategoria.SelectedItem;
+                articulo.ImagenUrl = txtImagenUrl.Text;                
+
+                if(articulo.Id != 0)
+                {
+                    negocio.modificar(articulo);
+                    MessageBox.Show("Artículo modificado exitosamente!");                    
+                }
+                else
+                {
+                    negocio.agregar(articulo);
+                    MessageBox.Show("Artículo agregado exitosamente!");
+                }
+
                 Close();
             }
             catch (Exception ex)
