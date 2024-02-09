@@ -54,12 +54,12 @@ namespace winform_app
                 if(articulo.Id != 0)
                 {
                     negocio.modificar(articulo);
-                    MessageBox.Show("Artículo modificado exitosamente!");                    
+                    MessageBox.Show("!Artículo modificado exitosamente!");                    
                 }
                 else
                 {
                     negocio.agregar(articulo);
-                    MessageBox.Show("Artículo agregado exitosamente!");
+                    MessageBox.Show("!Artículo agregado exitosamente!");
                 }
 
                 Close();
