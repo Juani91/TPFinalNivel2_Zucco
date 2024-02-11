@@ -13,8 +13,8 @@ namespace negocio
         public List<Articulo> listar()
         {
             List<Articulo> lista = new List<Articulo>();
-            AccesoDatos datos = new AccesoDatos();
-
+            AccesoDatos datos = new AccesoDatos();            
+            
             try
             {
                 datos.setearConsulta("select A.Id, Codigo, M.Descripcion Marca, Nombre, A.Descripcion, Precio, C.Descripcion Categoria, ImagenUrl, A.IdMarca, A.IdCategoria from ARTICULOS A, MARCAS M, CATEGORIAS C where M.Id = A.IdMarca and C.Id = A.IdCategoria");

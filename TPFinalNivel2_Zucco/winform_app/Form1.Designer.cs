@@ -83,6 +83,7 @@
             this.txtConsultar.Name = "txtConsultar";
             this.txtConsultar.Size = new System.Drawing.Size(335, 20);
             this.txtConsultar.TabIndex = 4;
+            this.txtConsultar.TextChanged += new System.EventHandler(this.txtConsultar_TextChanged);
             // 
             // articuloToolStripMenuItem
             // 
@@ -97,21 +98,21 @@
             // btnAgregar
             // 
             this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(180, 26);
+            this.btnAgregar.Size = new System.Drawing.Size(146, 26);
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // btnModificar
             // 
             this.btnModificar.Name = "btnModificar";
-            this.btnModificar.Size = new System.Drawing.Size(180, 26);
+            this.btnModificar.Size = new System.Drawing.Size(146, 26);
             this.btnModificar.Text = "Modificar";
             this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
             // btnEliminar
             // 
             this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(180, 26);
+            this.btnEliminar.Size = new System.Drawing.Size(146, 26);
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 

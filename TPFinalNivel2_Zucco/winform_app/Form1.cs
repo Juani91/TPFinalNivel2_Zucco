@@ -27,8 +27,7 @@ namespace winform_app
             {
                 listaArticulos = negocio.listar();
                 dgvArticulos.DataSource = listaArticulos;
-                dgvArticulos.Columns["ImagenUrl"].Visible = false;
-                dgvArticulos.Columns["Id"].Visible = false;
+                ocultarColumnas();
                 cargarImagen(listaArticulos[0].ImagenUrl);
             }
             catch (Exception ex)
@@ -44,8 +43,11 @@ namespace winform_app
 
         private void dgvArticulos_SelectionChanged(object sender, EventArgs e)
         {
-            Articulo seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
-            cargarImagen(seleccionado.ImagenUrl);
+            if(dgvArticulos.CurrentRow != null)
+            {
+                Articulo seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+                cargarImagen(seleccionado.ImagenUrl);
+            }
         }
 
         private void cargarImagen(string imagen)
@@ -96,6 +98,27 @@ namespace winform_app
             {
                 MessageBox.Show(ex.ToString());
             }
+        }
+
+        private void ocultarColumnas()
+        {
+            dgvArticulos.Columns["ImagenUrl"].Visible = false;
+            dgvArticulos.Columns["Id"].Visible = false;
+        }
+
+        private void txtConsultar_TextChanged(object sender, EventArgs e)
+        {
+            List<Articulo> listaConsulta;
+            string filtro = txtConsultar.Text;
+
+            if (filtro != "")
+                listaConsulta = listaArticulos.FindAll(x => x.Nombre.ToUpper().Contains(filtro.ToUpper()) || x.Codigo.ToUpper().Contains(filtro.ToUpper()) || x.Descripcion.ToUpper().Contains(filtro.ToUpper()) || x.Marca.Descripcion.ToUpper().Contains(filtro.ToUpper()) || x.Categoria.Descripcion.ToUpper().Contains(filtro.ToUpper()));
+            else
+                listaConsulta = listaArticulos;
+
+            dgvArticulos.DataSource = null;
+            dgvArticulos.DataSource = listaConsulta;
+            ocultarColumnas();
         }
     }
 }
