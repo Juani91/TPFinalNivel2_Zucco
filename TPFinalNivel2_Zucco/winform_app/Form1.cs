@@ -43,6 +43,7 @@ namespace winform_app
             cboCampo.Items.Add("Marca");
             cboCampo.Items.Add("Modelo");
             cboCampo.Items.Add("Descripción");
+            cboCampo.Items.Add("Categoría");
             cboCampo.Items.Add("Precio");
         }
 
@@ -149,11 +150,11 @@ namespace winform_app
             panConsultaSimple.Visible = false;
         }
 
-        private void cboCriterio_SelectedIndexChanged(object sender, EventArgs e)
+        private void cboCampo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string seleccion = cboCampo.SelectedItem.ToString();
+            string eleccion = cboCampo.SelectedItem.ToString();
 
-            if( seleccion == "Precio")
+            if (eleccion == "Precio")
             {
                 cboCriterio.Items.Clear();
                 cboCriterio.Items.Add("Mayor a");
@@ -163,9 +164,26 @@ namespace winform_app
             else
             {
                 cboCriterio.Items.Clear();
-                cboCriterio.Items.Add("Comienza con");
+                cboCriterio.Items.Add("Empieza con");
                 cboCriterio.Items.Add("Termina con");
                 cboCriterio.Items.Add("Contiene");
+            }
+        }
+
+        private void btnConsultaAvanzada_Click(object sender, EventArgs e)
+        {
+            ArticuloNegocio negocio = new ArticuloNegocio();
+
+            try
+            {
+                string campo = cboCampo.SelectedItem.ToString();
+                string criterio = cboCriterio.SelectedItem.ToString();
+                string filtro = txtConsultaAvanzada.Text;
+                dgvArticulos.DataSource = negocio.filtrar(campo, criterio, filtro);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
             }
         }
     }

@@ -49,7 +49,7 @@
             this.lblConsulta = new System.Windows.Forms.Label();
             this.btnConsultaAvanzada = new System.Windows.Forms.Button();
             this.cboCampo = new System.Windows.Forms.ComboBox();
-            this.txtConsulta = new System.Windows.Forms.TextBox();
+            this.txtConsultaAvanzada = new System.Windows.Forms.TextBox();
             this.lblCampo = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxArticulo)).BeginInit();
@@ -196,9 +196,9 @@
             this.panConsultaAvanzada.Controls.Add(this.lblConsulta);
             this.panConsultaAvanzada.Controls.Add(this.btnConsultaAvanzada);
             this.panConsultaAvanzada.Controls.Add(this.cboCampo);
-            this.panConsultaAvanzada.Controls.Add(this.txtConsulta);
+            this.panConsultaAvanzada.Controls.Add(this.txtConsultaAvanzada);
             this.panConsultaAvanzada.Controls.Add(this.lblCampo);
-            this.panConsultaAvanzada.Location = new System.Drawing.Point(268, 70);
+            this.panConsultaAvanzada.Location = new System.Drawing.Point(560, 169);
             this.panConsultaAvanzada.Name = "panConsultaAvanzada";
             this.panConsultaAvanzada.Size = new System.Drawing.Size(248, 171);
             this.panConsultaAvanzada.TabIndex = 6;
@@ -220,7 +220,6 @@
             this.cboCriterio.Name = "cboCriterio";
             this.cboCriterio.Size = new System.Drawing.Size(121, 21);
             this.cboCriterio.TabIndex = 6;
-            this.cboCriterio.SelectedIndexChanged += new System.EventHandler(this.cboCriterio_SelectedIndexChanged);
             // 
             // lblCriterio
             // 
@@ -248,6 +247,7 @@
             this.btnConsultaAvanzada.TabIndex = 3;
             this.btnConsultaAvanzada.Text = "Consultar";
             this.btnConsultaAvanzada.UseVisualStyleBackColor = true;
+            this.btnConsultaAvanzada.Click += new System.EventHandler(this.btnConsultaAvanzada_Click);
             // 
             // cboCampo
             // 
@@ -257,13 +257,14 @@
             this.cboCampo.Name = "cboCampo";
             this.cboCampo.Size = new System.Drawing.Size(121, 21);
             this.cboCampo.TabIndex = 2;
+            this.cboCampo.SelectedIndexChanged += new System.EventHandler(this.cboCampo_SelectedIndexChanged);
             // 
-            // txtConsulta
+            // txtConsultaAvanzada
             // 
-            this.txtConsulta.Location = new System.Drawing.Point(85, 78);
-            this.txtConsulta.Name = "txtConsulta";
-            this.txtConsulta.Size = new System.Drawing.Size(121, 20);
-            this.txtConsulta.TabIndex = 1;
+            this.txtConsultaAvanzada.Location = new System.Drawing.Point(85, 78);
+            this.txtConsultaAvanzada.Name = "txtConsultaAvanzada";
+            this.txtConsultaAvanzada.Size = new System.Drawing.Size(121, 20);
+            this.txtConsultaAvanzada.TabIndex = 1;
             // 
             // lblCampo
             // 
@@ -327,7 +328,7 @@
         private System.Windows.Forms.Label lblConsulta;
         private System.Windows.Forms.Button btnConsultaAvanzada;
         private System.Windows.Forms.ComboBox cboCampo;
-        private System.Windows.Forms.TextBox txtConsulta;
+        private System.Windows.Forms.TextBox txtConsultaAvanzada;
         private System.Windows.Forms.Label lblCampo;
     }
 }
