@@ -39,6 +39,11 @@ namespace winform_app
         private void frmArticulos_Load(object sender, EventArgs e)
         {
             cargar();
+
+            cboCampo.Items.Add("Marca");
+            cboCampo.Items.Add("Modelo");
+            cboCampo.Items.Add("Descripción");
+            cboCampo.Items.Add("Precio");
         }
 
         private void dgvArticulos_SelectionChanged(object sender, EventArgs e)
@@ -96,7 +101,7 @@ namespace winform_app
             }
             catch(Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show(ex.ToString());                
             }
         }
 
@@ -119,6 +124,49 @@ namespace winform_app
             dgvArticulos.DataSource = null;
             dgvArticulos.DataSource = listaConsulta;
             ocultarColumnas();
+        }
+
+        private void consultaSimpleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+            txtConsultar.Visible = true;
+            lblConsultar.Visible = true;
+            btnFinConsultaSimple.Visible = true;
+            if (this.Size.Height == 378)
+                this.Size = new System.Drawing.Size(this.Size.Width +0, this.Size.Height +25);
+
+            panConsultaSimple.Visible = true;
+        }
+
+        private void btnFinConsultaSimple_Click(object sender, EventArgs e)
+        {
+            txtConsultar.Visible = false;
+            lblConsultar.Visible = false;
+            btnFinConsultaSimple.Visible = false;            
+            this.Size = new System.Drawing.Size(this.Size.Width + 0, this.Size.Height - 25);
+            txtConsultar.Text = "";
+
+            panConsultaSimple.Visible = false;
+        }
+
+        private void cboCriterio_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string seleccion = cboCampo.SelectedItem.ToString();
+
+            if( seleccion == "Precio")
+            {
+                cboCriterio.Items.Clear();
+                cboCriterio.Items.Add("Mayor a");
+                cboCriterio.Items.Add("Menor a");
+                cboCriterio.Items.Add("Igual a");
+            }
+            else
+            {
+                cboCriterio.Items.Clear();
+                cboCriterio.Items.Add("Comienza con");
+                cboCriterio.Items.Add("Termina con");
+                cboCriterio.Items.Add("Contiene");
+            }
         }
     }
 }
