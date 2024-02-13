@@ -17,6 +17,7 @@ namespace winform_app
     public partial class frmAgregarArticulo : Form
     {
         private Articulo articulo = null;
+        private OpenFileDialog imagen = null;
 
         public frmAgregarArticulo()
         {
@@ -62,6 +63,11 @@ namespace winform_app
                 {
                     negocio.agregar(articulo);
                     MessageBox.Show("!Artículo agregado exitosamente!");
+                }
+
+                if(imagen != null && !(txtImagenUrl.Text.ToUpper().Contains("HTTP")))
+                {
+                    File.Copy(imagen.FileName, ConfigurationManager.AppSettings["articulos-app"] + imagen.SafeFileName);
                 }
 
                 Close();
@@ -122,9 +128,9 @@ namespace winform_app
 
         private void btnAgregarImagen_Click(object sender, EventArgs e)
         {
-            OpenFileDialog imagen = new OpenFileDialog();
-            imagen.Filter = "jpg|*.jpg";
-            imagen.ShowDialog();
+            imagen = new OpenFileDialog();
+            imagen.Filter = "jpg|*.jpg;|jpeg|*.jpeg";
+            
 
             if(imagen.ShowDialog() == DialogResult.OK)
             {
@@ -132,7 +138,7 @@ namespace winform_app
                 cargarImagen(imagen.FileName);
             }
 
-            File.Copy(imagen.FileName, ConfigurationManager.AppSettings["Articulos-app"] + imagen.SafeFileName);
+            
         }
     }
 }

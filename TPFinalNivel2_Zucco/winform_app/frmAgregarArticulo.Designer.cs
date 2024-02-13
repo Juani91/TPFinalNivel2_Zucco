@@ -202,7 +202,7 @@
             this.btnAgregarImagen.Name = "btnAgregarImagen";
             this.btnAgregarImagen.Size = new System.Drawing.Size(69, 23);
             this.btnAgregarImagen.TabIndex = 19;
-            this.btnAgregarImagen.Text = "Explorar";
+            this.btnAgregarImagen.Text = "Examinar";
             this.btnAgregarImagen.UseVisualStyleBackColor = true;
             this.btnAgregarImagen.Click += new System.EventHandler(this.btnAgregarImagen_Click);
             // 
