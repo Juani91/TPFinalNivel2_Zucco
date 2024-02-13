@@ -43,10 +43,11 @@
             this.panConsultaSimple = new System.Windows.Forms.Panel();
             this.btnFinConsultaSimple = new System.Windows.Forms.Button();
             this.panConsultaAvanzada = new System.Windows.Forms.Panel();
+            this.lblConsultaAvanzada = new System.Windows.Forms.Label();
             this.btnFinConsultaAvanzada = new System.Windows.Forms.Button();
             this.cboCriterio = new System.Windows.Forms.ComboBox();
             this.lblCriterio = new System.Windows.Forms.Label();
-            this.lblConsulta = new System.Windows.Forms.Label();
+            this.lblConsultaAv = new System.Windows.Forms.Label();
             this.btnConsultaAvanzada = new System.Windows.Forms.Button();
             this.cboCampo = new System.Windows.Forms.ComboBox();
             this.txtConsultaAvanzada = new System.Windows.Forms.TextBox();
@@ -87,9 +88,9 @@
             this.lblConsultar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblConsultar.Location = new System.Drawing.Point(6, 4);
             this.lblConsultar.Name = "lblConsultar";
-            this.lblConsultar.Size = new System.Drawing.Size(68, 17);
+            this.lblConsultar.Size = new System.Drawing.Size(109, 17);
             this.lblConsultar.TabIndex = 3;
-            this.lblConsultar.Text = "Consultar";
+            this.lblConsultar.Text = "Consulta Simple";
             this.lblConsultar.Visible = false;
             // 
             // articuloToolStripMenuItem
@@ -144,6 +145,7 @@
             this.búsquedaAvanzadaToolStripMenuItem.Name = "búsquedaAvanzadaToolStripMenuItem";
             this.búsquedaAvanzadaToolStripMenuItem.Size = new System.Drawing.Size(212, 26);
             this.búsquedaAvanzadaToolStripMenuItem.Text = "Consulta Avanzada";
+            this.búsquedaAvanzadaToolStripMenuItem.Click += new System.EventHandler(this.búsquedaAvanzadaToolStripMenuItem_Click);
             // 
             // menuStrip1
             // 
@@ -159,7 +161,7 @@
             // 
             // txtConsultar
             // 
-            this.txtConsultar.Location = new System.Drawing.Point(80, 3);
+            this.txtConsultar.Location = new System.Drawing.Point(121, 2);
             this.txtConsultar.Name = "txtConsultar";
             this.txtConsultar.Size = new System.Drawing.Size(335, 20);
             this.txtConsultar.TabIndex = 4;
@@ -173,13 +175,13 @@
             this.panConsultaSimple.Controls.Add(this.txtConsultar);
             this.panConsultaSimple.Location = new System.Drawing.Point(12, 332);
             this.panConsultaSimple.Name = "panConsultaSimple";
-            this.panConsultaSimple.Size = new System.Drawing.Size(553, 36);
+            this.panConsultaSimple.Size = new System.Drawing.Size(847, 212);
             this.panConsultaSimple.TabIndex = 5;
             this.panConsultaSimple.Visible = false;
             // 
             // btnFinConsultaSimple
             // 
-            this.btnFinConsultaSimple.Location = new System.Drawing.Point(421, 1);
+            this.btnFinConsultaSimple.Location = new System.Drawing.Point(462, 1);
             this.btnFinConsultaSimple.Name = "btnFinConsultaSimple";
             this.btnFinConsultaSimple.Size = new System.Drawing.Size(106, 23);
             this.btnFinConsultaSimple.TabIndex = 5;
@@ -190,90 +192,117 @@
             // 
             // panConsultaAvanzada
             // 
+            this.panConsultaAvanzada.Controls.Add(this.lblConsultaAvanzada);
             this.panConsultaAvanzada.Controls.Add(this.btnFinConsultaAvanzada);
             this.panConsultaAvanzada.Controls.Add(this.cboCriterio);
             this.panConsultaAvanzada.Controls.Add(this.lblCriterio);
-            this.panConsultaAvanzada.Controls.Add(this.lblConsulta);
+            this.panConsultaAvanzada.Controls.Add(this.lblConsultaAv);
             this.panConsultaAvanzada.Controls.Add(this.btnConsultaAvanzada);
             this.panConsultaAvanzada.Controls.Add(this.cboCampo);
             this.panConsultaAvanzada.Controls.Add(this.txtConsultaAvanzada);
             this.panConsultaAvanzada.Controls.Add(this.lblCampo);
-            this.panConsultaAvanzada.Location = new System.Drawing.Point(560, 169);
+            this.panConsultaAvanzada.Location = new System.Drawing.Point(12, 332);
             this.panConsultaAvanzada.Name = "panConsultaAvanzada";
-            this.panConsultaAvanzada.Size = new System.Drawing.Size(248, 171);
+            this.panConsultaAvanzada.Size = new System.Drawing.Size(830, 73);
             this.panConsultaAvanzada.TabIndex = 6;
+            this.panConsultaAvanzada.Visible = false;
+            // 
+            // lblConsultaAvanzada
+            // 
+            this.lblConsultaAvanzada.AutoSize = true;
+            this.lblConsultaAvanzada.CausesValidation = false;
+            this.lblConsultaAvanzada.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblConsultaAvanzada.Location = new System.Drawing.Point(6, 4);
+            this.lblConsultaAvanzada.Name = "lblConsultaAvanzada";
+            this.lblConsultaAvanzada.Size = new System.Drawing.Size(130, 17);
+            this.lblConsultaAvanzada.TabIndex = 8;
+            this.lblConsultaAvanzada.Text = "Consulta Avanzada";
             // 
             // btnFinConsultaAvanzada
             // 
-            this.btnFinConsultaAvanzada.Location = new System.Drawing.Point(117, 120);
+            this.btnFinConsultaAvanzada.Location = new System.Drawing.Point(701, 27);
             this.btnFinConsultaAvanzada.Name = "btnFinConsultaAvanzada";
             this.btnFinConsultaAvanzada.Size = new System.Drawing.Size(106, 23);
             this.btnFinConsultaAvanzada.TabIndex = 7;
             this.btnFinConsultaAvanzada.Text = "Terminar Consulta";
             this.btnFinConsultaAvanzada.UseVisualStyleBackColor = true;
+            this.btnFinConsultaAvanzada.Visible = false;
+            this.btnFinConsultaAvanzada.Click += new System.EventHandler(this.btnFinConsultaAvanzada_Click);
             // 
             // cboCriterio
             // 
             this.cboCriterio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboCriterio.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboCriterio.FormattingEnabled = true;
-            this.cboCriterio.Location = new System.Drawing.Point(85, 45);
+            this.cboCriterio.Location = new System.Drawing.Point(281, 26);
             this.cboCriterio.Name = "cboCriterio";
-            this.cboCriterio.Size = new System.Drawing.Size(121, 21);
+            this.cboCriterio.Size = new System.Drawing.Size(121, 24);
             this.cboCriterio.TabIndex = 6;
+            this.cboCriterio.Visible = false;
             // 
             // lblCriterio
             // 
             this.lblCriterio.AutoSize = true;
-            this.lblCriterio.Location = new System.Drawing.Point(32, 48);
+            this.lblCriterio.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCriterio.Location = new System.Drawing.Point(218, 30);
             this.lblCriterio.Name = "lblCriterio";
-            this.lblCriterio.Size = new System.Drawing.Size(39, 13);
+            this.lblCriterio.Size = new System.Drawing.Size(53, 17);
             this.lblCriterio.TabIndex = 5;
             this.lblCriterio.Text = "Criterio";
+            this.lblCriterio.Visible = false;
             // 
-            // lblConsulta
+            // lblConsultaAv
             // 
-            this.lblConsulta.AutoSize = true;
-            this.lblConsulta.Location = new System.Drawing.Point(23, 81);
-            this.lblConsulta.Name = "lblConsulta";
-            this.lblConsulta.Size = new System.Drawing.Size(48, 13);
-            this.lblConsulta.TabIndex = 4;
-            this.lblConsulta.Text = "Consulta";
+            this.lblConsultaAv.AutoSize = true;
+            this.lblConsultaAv.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblConsultaAv.Location = new System.Drawing.Point(412, 30);
+            this.lblConsultaAv.Name = "lblConsultaAv";
+            this.lblConsultaAv.Size = new System.Drawing.Size(63, 17);
+            this.lblConsultaAv.TabIndex = 4;
+            this.lblConsultaAv.Text = "Consulta";
+            this.lblConsultaAv.Visible = false;
             // 
             // btnConsultaAvanzada
             // 
-            this.btnConsultaAvanzada.Location = new System.Drawing.Point(36, 120);
+            this.btnConsultaAvanzada.Location = new System.Drawing.Point(616, 27);
             this.btnConsultaAvanzada.Name = "btnConsultaAvanzada";
             this.btnConsultaAvanzada.Size = new System.Drawing.Size(75, 23);
             this.btnConsultaAvanzada.TabIndex = 3;
             this.btnConsultaAvanzada.Text = "Consultar";
             this.btnConsultaAvanzada.UseVisualStyleBackColor = true;
+            this.btnConsultaAvanzada.Visible = false;
             this.btnConsultaAvanzada.Click += new System.EventHandler(this.btnConsultaAvanzada_Click);
             // 
             // cboCampo
             // 
             this.cboCampo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboCampo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboCampo.FormattingEnabled = true;
-            this.cboCampo.Location = new System.Drawing.Point(85, 12);
+            this.cboCampo.Location = new System.Drawing.Point(87, 26);
             this.cboCampo.Name = "cboCampo";
-            this.cboCampo.Size = new System.Drawing.Size(121, 21);
+            this.cboCampo.Size = new System.Drawing.Size(121, 24);
             this.cboCampo.TabIndex = 2;
+            this.cboCampo.Visible = false;
             this.cboCampo.SelectedIndexChanged += new System.EventHandler(this.cboCampo_SelectedIndexChanged);
             // 
             // txtConsultaAvanzada
             // 
-            this.txtConsultaAvanzada.Location = new System.Drawing.Point(85, 78);
+            this.txtConsultaAvanzada.Location = new System.Drawing.Point(485, 28);
             this.txtConsultaAvanzada.Name = "txtConsultaAvanzada";
             this.txtConsultaAvanzada.Size = new System.Drawing.Size(121, 20);
             this.txtConsultaAvanzada.TabIndex = 1;
+            this.txtConsultaAvanzada.Visible = false;
             // 
             // lblCampo
             // 
             this.lblCampo.AutoSize = true;
-            this.lblCampo.Location = new System.Drawing.Point(31, 15);
+            this.lblCampo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCampo.Location = new System.Drawing.Point(25, 30);
             this.lblCampo.Name = "lblCampo";
-            this.lblCampo.Size = new System.Drawing.Size(40, 13);
+            this.lblCampo.Size = new System.Drawing.Size(52, 17);
             this.lblCampo.TabIndex = 0;
             this.lblCampo.Text = "Campo";
+            this.lblCampo.Visible = false;
             // 
             // frmArticulos
             // 
@@ -325,11 +354,12 @@
         private System.Windows.Forms.Button btnFinConsultaAvanzada;
         private System.Windows.Forms.ComboBox cboCriterio;
         private System.Windows.Forms.Label lblCriterio;
-        private System.Windows.Forms.Label lblConsulta;
+        private System.Windows.Forms.Label lblConsultaAv;
         private System.Windows.Forms.Button btnConsultaAvanzada;
         private System.Windows.Forms.ComboBox cboCampo;
         private System.Windows.Forms.TextBox txtConsultaAvanzada;
         private System.Windows.Forms.Label lblCampo;
+        private System.Windows.Forms.Label lblConsultaAvanzada;
     }
 }
 

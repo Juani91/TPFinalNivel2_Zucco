@@ -126,30 +126,7 @@ namespace winform_app
             dgvArticulos.DataSource = listaConsulta;
             ocultarColumnas();
         }
-
-        private void consultaSimpleToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            
-            txtConsultar.Visible = true;
-            lblConsultar.Visible = true;
-            btnFinConsultaSimple.Visible = true;
-            if (this.Size.Height == 378)
-                this.Size = new System.Drawing.Size(this.Size.Width +0, this.Size.Height +25);
-
-            panConsultaSimple.Visible = true;
-        }
-
-        private void btnFinConsultaSimple_Click(object sender, EventArgs e)
-        {
-            txtConsultar.Visible = false;
-            lblConsultar.Visible = false;
-            btnFinConsultaSimple.Visible = false;            
-            this.Size = new System.Drawing.Size(this.Size.Width + 0, this.Size.Height - 25);
-            txtConsultar.Text = "";
-
-            panConsultaSimple.Visible = false;
-        }
-
+        
         private void cboCampo_SelectedIndexChanged(object sender, EventArgs e)
         {
             string eleccion = cboCampo.SelectedItem.ToString();
@@ -185,6 +162,80 @@ namespace winform_app
             {
                 MessageBox.Show(ex.ToString());
             }
+        }
+        private void consultaSimpleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            cerrarConsultaAvanzada();
+
+            txtConsultar.Visible = true;
+            lblConsultar.Visible = true;
+            btnFinConsultaSimple.Visible = true;
+            if (this.Size.Height == 378)
+                this.Size = new System.Drawing.Size(this.Size.Width + 0, this.Size.Height + 25);
+
+            panConsultaSimple.Visible = true;
+        }
+
+        private void btnFinConsultaSimple_Click(object sender, EventArgs e)
+        {
+            cerrarConsulta();
+        }
+
+        private void búsquedaAvanzadaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            cerrarConsulta();
+
+            lblConsultaAvanzada.Visible = true;
+            lblCampo.Visible = true;
+            lblCriterio.Visible = true;
+            lblConsultaAv.Visible = true;            
+            cboCampo.Visible = true;
+            cboCriterio.Visible = true;
+            txtConsultaAvanzada.Visible = true;
+            btnConsultaAvanzada.Visible = true;
+            btnFinConsultaAvanzada .Visible = true;
+
+            if (this.Size.Height == 378)
+                this.Size = new System.Drawing.Size(this.Size.Width + 0, this.Size.Height + 52);
+
+            panConsultaAvanzada.Visible = true;
+        }
+
+        private void btnFinConsultaAvanzada_Click(object sender, EventArgs e)
+        {
+            cerrarConsultaAvanzada();
+        }
+
+        private void cerrarConsulta()
+        {
+            txtConsultar.Visible = false;
+            lblConsultar.Visible = false;
+            btnFinConsultaSimple.Visible = false;
+
+            if(this.Size.Height != 378 && this.Size.Height != 430)
+                this.Size = new System.Drawing.Size(this.Size.Width + 0, this.Size.Height - 25);
+
+            txtConsultar.Text = "";
+            panConsultaSimple.Visible = false;
+        }
+
+        private void cerrarConsultaAvanzada()
+        {
+            lblConsultaAvanzada.Visible = false;
+            lblCampo.Visible = false;
+            lblCriterio.Visible = false;
+            lblConsultaAv.Visible = false;
+            cboCampo.Visible = false;
+            cboCriterio.Visible = false;
+            txtConsultaAvanzada.Visible = false;
+            btnConsultaAvanzada.Visible = false;
+            btnFinConsultaAvanzada.Visible = false;
+
+            if (this.Size.Height != 378 && this.Size.Height != 403)
+                this.Size = new System.Drawing.Size(this.Size.Width + 0, this.Size.Height - 52);
+
+            txtConsultaAvanzada.Text = "";
+            panConsultaAvanzada.Visible = false;
         }
     }
 }

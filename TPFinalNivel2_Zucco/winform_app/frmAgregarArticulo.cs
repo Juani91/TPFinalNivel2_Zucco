@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using dominio;
 using negocio;
+using System.Configuration;
 
 namespace winform_app
 {
@@ -116,6 +118,21 @@ namespace winform_app
         private void txtImagenUrl_TextChanged(object sender, EventArgs e)
         {
             cargarImagen(txtImagenUrl.Text);
+        }
+
+        private void btnAgregarImagen_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog imagen = new OpenFileDialog();
+            imagen.Filter = "jpg|*.jpg";
+            imagen.ShowDialog();
+
+            if(imagen.ShowDialog() == DialogResult.OK)
+            {
+                txtImagenUrl.Text = imagen.FileName;
+                cargarImagen(imagen.FileName);
+            }
+
+            File.Copy(imagen.FileName, ConfigurationManager.AppSettings["Articulos-app"] + imagen.SafeFileName);
         }
     }
 }
