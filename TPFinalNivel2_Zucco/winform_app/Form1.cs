@@ -14,7 +14,8 @@ namespace winform_app
 {
     public partial class frmArticulos : Form
     {
-        private List<Articulo> listaArticulos;
+        private List<Articulo> listaArticulos;        
+
         public frmArticulos()
         {
             InitializeComponent();
@@ -241,6 +242,14 @@ namespace winform_app
         private void btnAgregarMarca_Click(object sender, EventArgs e)
         {
             frmAgregarMarca alta = new frmAgregarMarca();
+            alta.ShowDialog();
+        }
+
+        private void btnModificarMarca_Click(object sender, EventArgs e)
+        {
+            bool marca = true;
+
+            frmAgregarMarca alta = new frmAgregarMarca(marca);
             alta.ShowDialog();
         }
     }

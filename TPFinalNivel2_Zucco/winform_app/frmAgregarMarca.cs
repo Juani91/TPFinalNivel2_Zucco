@@ -14,9 +14,19 @@ namespace winform_app
 {
     public partial class frmAgregarMarca : Form
     {
+        bool modificada = false;
+
         public frmAgregarMarca()
         {
             InitializeComponent();
+        }
+
+        public frmAgregarMarca(bool marca)
+        {
+            InitializeComponent();
+            modificada = marca;
+            Text = "Modificar Marca";
+            lblAgregarMarca.Text = "Modificar";
         }
 
         private void btnCancelarMarca_Click(object sender, EventArgs e)
@@ -31,10 +41,20 @@ namespace winform_app
 
             try
             {
+                marca.Id = int.Parse(dgvAgregarMarca.SelectedRows[0].Cells["Id"].Value.ToString());
                 marca.Descripcion = txtAgregarMarca.Text;
 
-                negocio.agegar(marca);
-                MessageBox.Show("¡Marca agregada exitosamente!");
+                if(modificada ==  false)
+                {
+                    negocio.agegar(marca);
+                    MessageBox.Show("¡Marca agregada exitosamente!");
+                }
+                else
+                {
+                    negocio.modificar(marca);
+                    MessageBox.Show("¡Marca modificada exitosamente!");
+                }
+
                 Close();    
             }
             catch(Exception ex)
@@ -48,6 +68,22 @@ namespace winform_app
             MarcaNegocio negocio = new MarcaNegocio();
             dgvAgregarMarca.DataSource = negocio.listar();
             dgvAgregarMarca.Columns["Id"].Visible = false;
+        }
+
+        private void dgvAgregarMarca_SelectionChanged(object sender, EventArgs e)
+        {
+            if(modificada == true)
+            {
+                if(dgvAgregarMarca.SelectedRows.Count > 0)
+                {               
+                    string marca = dgvAgregarMarca.SelectedRows[0].Cells["Descripcion"].Value.ToString();
+                    txtAgregarMarca.Text = marca;
+                }
+                else
+                {
+                    txtAgregarMarca.Clear();
+                }
+            }
         }
     }
 }

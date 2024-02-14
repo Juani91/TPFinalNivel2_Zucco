@@ -54,13 +54,14 @@
             this.dgvAgregarMarca.AllowUserToResizeRows = false;
             this.dgvAgregarMarca.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAgregarMarca.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dgvAgregarMarca.Location = new System.Drawing.Point(222, 189);
+            this.dgvAgregarMarca.Location = new System.Drawing.Point(231, 180);
             this.dgvAgregarMarca.MultiSelect = false;
             this.dgvAgregarMarca.Name = "dgvAgregarMarca";
             this.dgvAgregarMarca.RowHeadersVisible = false;
             this.dgvAgregarMarca.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvAgregarMarca.Size = new System.Drawing.Size(149, 218);
             this.dgvAgregarMarca.TabIndex = 1;
+            this.dgvAgregarMarca.SelectionChanged += new System.EventHandler(this.dgvAgregarMarca_SelectionChanged);
             // 
             // txtAgregarMarca
             // 
@@ -121,7 +122,7 @@
             this.MinimizeBox = false;
             this.Name = "frmAgregarMarca";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmAgregarMarca";
+            this.Text = "Nueva Marca";
             this.Load += new System.EventHandler(this.frmAgregarMarca_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAgregarMarca)).EndInit();
             this.ResumeLayout(false);

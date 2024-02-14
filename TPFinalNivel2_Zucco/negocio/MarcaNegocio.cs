@@ -47,8 +47,8 @@ namespace negocio
 
             try
             {
-                datos.setearConsulta("insert into MARCAS (Descripcion) values ('" + nueva.Descripcion + "')");
-                //datos.setearParametro("Descripcion", nueva.Descripcion);
+                datos.setearConsulta("insert into MARCAS (Descripcion) values (@Descripcion)");
+                datos.setearParametro("Descripcion", nueva.Descripcion);
                 datos.ejecutarAccion();
             }
             catch (Exception ex)
@@ -63,7 +63,23 @@ namespace negocio
 
         public void modificar(Marca modificada)
         {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("update MARCAS set Descripcion = @Descripcion where Id = @Id");                
+                datos.setearParametro("Descripcion", modificada.Descripcion);
+                datos.setearParametro("Id", modificada.Id);
 
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
         }
 
         public void eliminar(int id)
