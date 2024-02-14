@@ -52,6 +52,14 @@
             this.cboCampo = new System.Windows.Forms.ComboBox();
             this.txtConsultaAvanzada = new System.Windows.Forms.TextBox();
             this.lblCampo = new System.Windows.Forms.Label();
+            this.marcaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnAgregarMarca = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnModificarMarca = new System.Windows.Forms.ToolStripMenuItem();
+            this.eliminarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.categoríaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnAgregarCategoria = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnModificarCategoria = new System.Windows.Forms.ToolStripMenuItem();
+            this.eliminarToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxArticulo)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -152,6 +160,8 @@
             this.menuStrip1.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.articuloToolStripMenuItem,
+            this.marcaToolStripMenuItem,
+            this.categoríaToolStripMenuItem,
             this.buscarToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -304,6 +314,63 @@
             this.lblCampo.Text = "Campo";
             this.lblCampo.Visible = false;
             // 
+            // marcaToolStripMenuItem
+            // 
+            this.marcaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnAgregarMarca,
+            this.btnModificarMarca,
+            this.eliminarToolStripMenuItem});
+            this.marcaToolStripMenuItem.Name = "marcaToolStripMenuItem";
+            this.marcaToolStripMenuItem.Size = new System.Drawing.Size(65, 25);
+            this.marcaToolStripMenuItem.Text = "Marca";
+            // 
+            // btnAgregarMarca
+            // 
+            this.btnAgregarMarca.Name = "btnAgregarMarca";
+            this.btnAgregarMarca.Size = new System.Drawing.Size(180, 26);
+            this.btnAgregarMarca.Text = "Agregar";
+            this.btnAgregarMarca.Click += new System.EventHandler(this.btnAgregarMarca_Click);
+            // 
+            // btnModificarMarca
+            // 
+            this.btnModificarMarca.Name = "btnModificarMarca";
+            this.btnModificarMarca.Size = new System.Drawing.Size(180, 26);
+            this.btnModificarMarca.Text = "Modificar";
+            // 
+            // eliminarToolStripMenuItem
+            // 
+            this.eliminarToolStripMenuItem.Name = "eliminarToolStripMenuItem";
+            this.eliminarToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
+            this.eliminarToolStripMenuItem.Text = "Eliminar";
+            // 
+            // categoríaToolStripMenuItem
+            // 
+            this.categoríaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnAgregarCategoria,
+            this.btnModificarCategoria,
+            this.eliminarToolStripMenuItem1});
+            this.categoríaToolStripMenuItem.Name = "categoríaToolStripMenuItem";
+            this.categoríaToolStripMenuItem.Size = new System.Drawing.Size(89, 25);
+            this.categoríaToolStripMenuItem.Text = "Categoría";
+            // 
+            // btnAgregarCategoria
+            // 
+            this.btnAgregarCategoria.Name = "btnAgregarCategoria";
+            this.btnAgregarCategoria.Size = new System.Drawing.Size(180, 26);
+            this.btnAgregarCategoria.Text = "Agregar";
+            // 
+            // btnModificarCategoria
+            // 
+            this.btnModificarCategoria.Name = "btnModificarCategoria";
+            this.btnModificarCategoria.Size = new System.Drawing.Size(180, 26);
+            this.btnModificarCategoria.Text = "Modificar";
+            // 
+            // eliminarToolStripMenuItem1
+            // 
+            this.eliminarToolStripMenuItem1.Name = "eliminarToolStripMenuItem1";
+            this.eliminarToolStripMenuItem1.Size = new System.Drawing.Size(180, 26);
+            this.eliminarToolStripMenuItem1.Text = "Eliminar";
+            // 
             // frmArticulos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -360,6 +427,14 @@
         private System.Windows.Forms.TextBox txtConsultaAvanzada;
         private System.Windows.Forms.Label lblCampo;
         private System.Windows.Forms.Label lblConsultaAvanzada;
+        private System.Windows.Forms.ToolStripMenuItem marcaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem btnAgregarMarca;
+        private System.Windows.Forms.ToolStripMenuItem btnModificarMarca;
+        private System.Windows.Forms.ToolStripMenuItem eliminarToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem categoríaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem btnAgregarCategoria;
+        private System.Windows.Forms.ToolStripMenuItem btnModificarCategoria;
+        private System.Windows.Forms.ToolStripMenuItem eliminarToolStripMenuItem1;
     }
 }
 

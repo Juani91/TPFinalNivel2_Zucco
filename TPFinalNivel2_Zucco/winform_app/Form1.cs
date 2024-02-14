@@ -237,5 +237,11 @@ namespace winform_app
             txtConsultaAvanzada.Text = "";
             panConsultaAvanzada.Visible = false;
         }
+
+        private void btnAgregarMarca_Click(object sender, EventArgs e)
+        {
+            frmAgregarMarca alta = new frmAgregarMarca();
+            alta.ShowDialog();
+        }
     }
 }

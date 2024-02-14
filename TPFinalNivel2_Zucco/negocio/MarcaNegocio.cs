@@ -21,11 +21,12 @@ namespace negocio
 
                 while (datos.Lector.Read())
                 {
-                Marca aux = new Marca();
-                aux.Id = (int)datos.Lector["Id"];
-                aux.Descripcion = (string)datos.Lector["Descripcion"]; 
+                    Marca aux = new Marca();
 
-                lista.Add(aux);
+                    aux.Id = (int)datos.Lector["Id"];
+                    aux.Descripcion = (string)datos.Lector["Descripcion"]; 
+
+                    lista.Add(aux);
                 }
 
                 return lista;                
@@ -42,10 +43,30 @@ namespace negocio
 
         public void agegar(Marca nueva)
         {
+            AccesoDatos datos = new AccesoDatos();
 
+            try
+            {
+                datos.setearConsulta("insert into MARCAS (Descripcion) values ('" + nueva.Descripcion + "')");
+                //datos.setearParametro("Descripcion", nueva.Descripcion);
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
         }
 
         public void modificar(Marca modificada)
+        {
+
+        }
+
+        public void eliminar(int id)
         {
 
         }
