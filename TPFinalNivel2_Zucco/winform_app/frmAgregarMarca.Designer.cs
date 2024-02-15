@@ -76,6 +76,7 @@
             this.txtConsultarMarca.Name = "txtConsultarMarca";
             this.txtConsultarMarca.Size = new System.Drawing.Size(168, 20);
             this.txtConsultarMarca.TabIndex = 3;
+            this.txtConsultarMarca.TextChanged += new System.EventHandler(this.txtConsultarMarca_TextChanged);
             // 
             // btnCancelarMarca
             // 

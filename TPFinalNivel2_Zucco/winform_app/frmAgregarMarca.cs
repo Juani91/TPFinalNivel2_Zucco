@@ -14,19 +14,31 @@ namespace winform_app
 {
     public partial class frmAgregarMarca : Form
     {
+        private List<Marca> listaMarcas;
+
         bool modificada = false;
+        bool eliminada = false;
 
         public frmAgregarMarca()
         {
             InitializeComponent();
         }
 
-        public frmAgregarMarca(bool marca)
+        public frmAgregarMarca(bool situacion)
         {
             InitializeComponent();
-            modificada = marca;
+            modificada = situacion;
             Text = "Modificar Marca";
             lblAgregarMarca.Text = "Modificar";
+        }
+
+        public frmAgregarMarca(bool situacion, bool eliminar)
+        {
+            InitializeComponent();
+            modificada = situacion;
+            eliminada = eliminar;
+            Text = "Eliminar Marca";
+            lblAgregarMarca.Text = "Eliminar";
         }
 
         private void btnCancelarMarca_Click(object sender, EventArgs e)
@@ -44,15 +56,20 @@ namespace winform_app
                 marca.Id = int.Parse(dgvAgregarMarca.SelectedRows[0].Cells["Id"].Value.ToString());
                 marca.Descripcion = txtAgregarMarca.Text;
 
-                if(modificada ==  false)
+                if(modificada == true && eliminada == true)
                 {
-                    negocio.agegar(marca);
-                    MessageBox.Show("¡Marca agregada exitosamente!");
+                    negocio.eliminar(marca);
+                    MessageBox.Show("¡Marca eliminada exitosamente!");
                 }
-                else
+                else if(modificada == true)
                 {
                     negocio.modificar(marca);
                     MessageBox.Show("¡Marca modificada exitosamente!");
+                }
+                else
+                {
+                    negocio.agegar(marca);
+                    MessageBox.Show("¡Marca agregada exitosamente!");
                 }
 
                 Close();    
@@ -67,23 +84,43 @@ namespace winform_app
         {
             MarcaNegocio negocio = new MarcaNegocio();
             dgvAgregarMarca.DataSource = negocio.listar();
-            dgvAgregarMarca.Columns["Id"].Visible = false;
+            ocultarColumnaId();
         }
 
         private void dgvAgregarMarca_SelectionChanged(object sender, EventArgs e)
         {
-            if(modificada == true)
+            try
             {
-                if(dgvAgregarMarca.SelectedRows.Count > 0)
-                {               
-                    string marca = dgvAgregarMarca.SelectedRows[0].Cells["Descripcion"].Value.ToString();
-                    txtAgregarMarca.Text = marca;
-                }
-                else
+                if(modificada == true)
                 {
-                    txtAgregarMarca.Clear();
+                    Marca seleccionado = (Marca)dgvAgregarMarca.CurrentRow.DataBoundItem;
+                    txtAgregarMarca.Text = seleccionado.Descripcion.ToString();               
                 }
             }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void ocultarColumnaId()
+        {
+            dgvAgregarMarca.Columns["Id"].Visible = false;
+        }
+
+        private void txtConsultarMarca_TextChanged(object sender, EventArgs e)
+        {
+            List<Marca> listaMarcasConsulta;
+            string filtro = txtConsultarMarca.Text;
+            
+            if(filtro != "")
+                listaMarcasConsulta = listaMarcas.FindAll(x => x.Descripcion.ToUpper() == filtro.ToUpper());
+            else           
+                listaMarcasConsulta = listaMarcas;
+
+            dgvAgregarMarca.DataSource = null;
+            dgvAgregarMarca.DataSource = listaMarcasConsulta;
+            ocultarColumnaId();
         }
     }
 }

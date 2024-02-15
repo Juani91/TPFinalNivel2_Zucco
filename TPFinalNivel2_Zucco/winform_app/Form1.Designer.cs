@@ -198,6 +198,7 @@
             this.eliminarToolStripMenuItem.Name = "eliminarToolStripMenuItem";
             this.eliminarToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
             this.eliminarToolStripMenuItem.Text = "Eliminar";
+            this.eliminarToolStripMenuItem.Click += new System.EventHandler(this.eliminarToolStripMenuItem_Click);
             // 
             // categoríaToolStripMenuItem
             // 
@@ -212,19 +213,19 @@
             // btnAgregarCategoria
             // 
             this.btnAgregarCategoria.Name = "btnAgregarCategoria";
-            this.btnAgregarCategoria.Size = new System.Drawing.Size(180, 26);
+            this.btnAgregarCategoria.Size = new System.Drawing.Size(146, 26);
             this.btnAgregarCategoria.Text = "Agregar";
             // 
             // btnModificarCategoria
             // 
             this.btnModificarCategoria.Name = "btnModificarCategoria";
-            this.btnModificarCategoria.Size = new System.Drawing.Size(180, 26);
+            this.btnModificarCategoria.Size = new System.Drawing.Size(146, 26);
             this.btnModificarCategoria.Text = "Modificar";
             // 
             // eliminarToolStripMenuItem1
             // 
             this.eliminarToolStripMenuItem1.Name = "eliminarToolStripMenuItem1";
-            this.eliminarToolStripMenuItem1.Size = new System.Drawing.Size(180, 26);
+            this.eliminarToolStripMenuItem1.Size = new System.Drawing.Size(146, 26);
             this.eliminarToolStripMenuItem1.Text = "Eliminar";
             // 
             // txtConsultar

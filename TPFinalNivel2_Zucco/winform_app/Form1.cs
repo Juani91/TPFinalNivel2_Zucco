@@ -247,9 +247,18 @@ namespace winform_app
 
         private void btnModificarMarca_Click(object sender, EventArgs e)
         {
-            bool marca = true;
+            bool situacion = true;
 
-            frmAgregarMarca alta = new frmAgregarMarca(marca);
+            frmAgregarMarca alta = new frmAgregarMarca(situacion);
+            alta.ShowDialog();
+        }
+
+        private void eliminarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            bool situacion = true;
+            bool eliminar = true;
+
+            frmAgregarMarca alta = new frmAgregarMarca(situacion, eliminar);
             alta.ShowDialog();
         }
     }
