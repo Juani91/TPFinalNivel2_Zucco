@@ -42,7 +42,7 @@
             this.marcaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnAgregarMarca = new System.Windows.Forms.ToolStripMenuItem();
             this.btnModificarMarca = new System.Windows.Forms.ToolStripMenuItem();
-            this.eliminarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnEliminarMarca = new System.Windows.Forms.ToolStripMenuItem();
             this.categoríaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnAgregarCategoria = new System.Windows.Forms.ToolStripMenuItem();
             this.btnModificarCategoria = new System.Windows.Forms.ToolStripMenuItem();
@@ -174,7 +174,7 @@
             this.marcaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnAgregarMarca,
             this.btnModificarMarca,
-            this.eliminarToolStripMenuItem});
+            this.btnEliminarMarca});
             this.marcaToolStripMenuItem.Name = "marcaToolStripMenuItem";
             this.marcaToolStripMenuItem.Size = new System.Drawing.Size(65, 25);
             this.marcaToolStripMenuItem.Text = "Marca";
@@ -193,12 +193,12 @@
             this.btnModificarMarca.Text = "Modificar";
             this.btnModificarMarca.Click += new System.EventHandler(this.btnModificarMarca_Click);
             // 
-            // eliminarToolStripMenuItem
+            // btnEliminarMarca
             // 
-            this.eliminarToolStripMenuItem.Name = "eliminarToolStripMenuItem";
-            this.eliminarToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
-            this.eliminarToolStripMenuItem.Text = "Eliminar";
-            this.eliminarToolStripMenuItem.Click += new System.EventHandler(this.eliminarToolStripMenuItem_Click);
+            this.btnEliminarMarca.Name = "btnEliminarMarca";
+            this.btnEliminarMarca.Size = new System.Drawing.Size(180, 26);
+            this.btnEliminarMarca.Text = "Eliminar";
+            this.btnEliminarMarca.Click += new System.EventHandler(this.btnEliminarMarca_Click);
             // 
             // categoríaToolStripMenuItem
             // 
@@ -432,7 +432,7 @@
         private System.Windows.Forms.ToolStripMenuItem marcaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem btnAgregarMarca;
         private System.Windows.Forms.ToolStripMenuItem btnModificarMarca;
-        private System.Windows.Forms.ToolStripMenuItem eliminarToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem btnEliminarMarca;
         private System.Windows.Forms.ToolStripMenuItem categoríaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem btnAgregarCategoria;
         private System.Windows.Forms.ToolStripMenuItem btnModificarCategoria;

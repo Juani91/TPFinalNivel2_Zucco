@@ -83,18 +83,20 @@ namespace winform_app
         private void frmAgregarMarca_Load(object sender, EventArgs e)
         {
             MarcaNegocio negocio = new MarcaNegocio();
-            dgvAgregarMarca.DataSource = negocio.listar();
+            listaMarcas = negocio.listar();
+            dgvAgregarMarca.DataSource = listaMarcas;
             ocultarColumnaId();
         }
 
         private void dgvAgregarMarca_SelectionChanged(object sender, EventArgs e)
         {
+            Marca seleccionado = new Marca();
             try
             {
                 if(modificada == true)
-                {
-                    Marca seleccionado = (Marca)dgvAgregarMarca.CurrentRow.DataBoundItem;
-                    txtAgregarMarca.Text = seleccionado.Descripcion.ToString();               
+                {                    
+                    seleccionado = (Marca)dgvAgregarMarca.CurrentRow.DataBoundItem;
+                    txtAgregarMarca.Text = seleccionado.Descripcion.ToString();                    
                 }
             }
             catch(Exception ex)
@@ -114,7 +116,7 @@ namespace winform_app
             string filtro = txtConsultarMarca.Text;
             
             if(filtro != "")
-                listaMarcasConsulta = listaMarcas.FindAll(x => x.Descripcion.ToUpper() == filtro.ToUpper());
+                listaMarcasConsulta = listaMarcas.FindAll(x => x.Descripcion.ToUpper().Contains(filtro.ToUpper()));
             else           
                 listaMarcasConsulta = listaMarcas;
 

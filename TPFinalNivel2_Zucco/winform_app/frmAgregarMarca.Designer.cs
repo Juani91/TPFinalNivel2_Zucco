@@ -40,7 +40,7 @@
             // 
             // btnAceptarMarca
             // 
-            this.btnAceptarMarca.Location = new System.Drawing.Point(403, 293);
+            this.btnAceptarMarca.Location = new System.Drawing.Point(203, 174);
             this.btnAceptarMarca.Name = "btnAceptarMarca";
             this.btnAceptarMarca.Size = new System.Drawing.Size(75, 23);
             this.btnAceptarMarca.TabIndex = 0;
@@ -54,7 +54,7 @@
             this.dgvAgregarMarca.AllowUserToResizeRows = false;
             this.dgvAgregarMarca.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAgregarMarca.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dgvAgregarMarca.Location = new System.Drawing.Point(231, 180);
+            this.dgvAgregarMarca.Location = new System.Drawing.Point(31, 61);
             this.dgvAgregarMarca.MultiSelect = false;
             this.dgvAgregarMarca.Name = "dgvAgregarMarca";
             this.dgvAgregarMarca.RowHeadersVisible = false;
@@ -65,14 +65,14 @@
             // 
             // txtAgregarMarca
             // 
-            this.txtAgregarMarca.Location = new System.Drawing.Point(402, 254);
+            this.txtAgregarMarca.Location = new System.Drawing.Point(202, 135);
             this.txtAgregarMarca.Name = "txtAgregarMarca";
             this.txtAgregarMarca.Size = new System.Drawing.Size(168, 20);
             this.txtAgregarMarca.TabIndex = 2;
             // 
             // txtConsultarMarca
             // 
-            this.txtConsultarMarca.Location = new System.Drawing.Point(335, 141);
+            this.txtConsultarMarca.Location = new System.Drawing.Point(135, 22);
             this.txtConsultarMarca.Name = "txtConsultarMarca";
             this.txtConsultarMarca.Size = new System.Drawing.Size(168, 20);
             this.txtConsultarMarca.TabIndex = 3;
@@ -80,7 +80,7 @@
             // 
             // btnCancelarMarca
             // 
-            this.btnCancelarMarca.Location = new System.Drawing.Point(495, 293);
+            this.btnCancelarMarca.Location = new System.Drawing.Point(295, 174);
             this.btnCancelarMarca.Name = "btnCancelarMarca";
             this.btnCancelarMarca.Size = new System.Drawing.Size(75, 23);
             this.btnCancelarMarca.TabIndex = 4;
@@ -91,7 +91,7 @@
             // lblAgregarMarca
             // 
             this.lblAgregarMarca.AutoSize = true;
-            this.lblAgregarMarca.Location = new System.Drawing.Point(464, 221);
+            this.lblAgregarMarca.Location = new System.Drawing.Point(264, 102);
             this.lblAgregarMarca.Name = "lblAgregarMarca";
             this.lblAgregarMarca.Size = new System.Drawing.Size(44, 13);
             this.lblAgregarMarca.TabIndex = 5;
@@ -100,7 +100,7 @@
             // lblConsultarMarca
             // 
             this.lblConsultarMarca.AutoSize = true;
-            this.lblConsultarMarca.Location = new System.Drawing.Point(267, 144);
+            this.lblConsultarMarca.Location = new System.Drawing.Point(67, 25);
             this.lblConsultarMarca.Name = "lblConsultarMarca";
             this.lblConsultarMarca.Size = new System.Drawing.Size(51, 13);
             this.lblConsultarMarca.TabIndex = 6;
@@ -110,7 +110,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(403, 292);
             this.Controls.Add(this.lblConsultarMarca);
             this.Controls.Add(this.lblAgregarMarca);
             this.Controls.Add(this.btnCancelarMarca);

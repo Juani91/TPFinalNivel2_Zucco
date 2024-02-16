@@ -243,6 +243,8 @@ namespace winform_app
         {
             frmAgregarMarca alta = new frmAgregarMarca();
             alta.ShowDialog();
+
+            cargar();
         }
 
         private void btnModificarMarca_Click(object sender, EventArgs e)
@@ -251,15 +253,19 @@ namespace winform_app
 
             frmAgregarMarca alta = new frmAgregarMarca(situacion);
             alta.ShowDialog();
+
+            cargar();
         }
 
-        private void eliminarToolStripMenuItem_Click(object sender, EventArgs e)
+        private void btnEliminarMarca_Click(object sender, EventArgs e)
         {
             bool situacion = true;
             bool eliminar = true;
 
             frmAgregarMarca alta = new frmAgregarMarca(situacion, eliminar);
             alta.ShowDialog();
+
+            cargar();
         }
     }
 }
