@@ -15,30 +15,46 @@ namespace winform_app
     public partial class frmAgregarMarca : Form
     {
         private List<Marca> listaMarcas;
+        private List<Categoria> listaCategorias;
 
         bool modificada = false;
-        bool eliminada = false;
+        bool eliminada = false; // ESTO HACE FALTA??? Creo que sí.. para trabajar con las funciones de manera global
+        bool categoria = false;
 
-        public frmAgregarMarca()
+        public frmAgregarMarca(bool modificar, bool eliminar, bool esCategoria)
         {
             InitializeComponent();
-        }
 
-        public frmAgregarMarca(bool situacion)
-        {
-            InitializeComponent();
-            modificada = situacion;
-            Text = "Modificar Marca";
-            lblAgregarMarca.Text = "Modificar";
-        }
+            modificada = modificar;
+            eliminada = eliminar; // ESTO HACE FALTA???
+            categoria = esCategoria;
 
-        public frmAgregarMarca(bool situacion, bool eliminar)
-        {
-            InitializeComponent();
-            modificada = situacion;
-            eliminada = eliminar;
-            Text = "Eliminar Marca";
-            lblAgregarMarca.Text = "Eliminar";
+            if(!esCategoria)
+            {
+                if (modificar)
+                {
+                    Text = "Modificar Marca";
+                    lblAgregarMarca.Text = "Modificar";
+                }
+                else
+                {
+                    Text = "Eliminar Marca";
+                    lblAgregarMarca.Text = "Eliminar";
+                }
+            }
+            else
+            {
+                if (modificar)
+                {
+                    Text = "Modificar Categoría";
+                    lblAgregarMarca.Text = "Modificar";
+                }
+                else
+                {
+                    Text = "Eliminar Categoría";
+                    lblAgregarMarca.Text = "Eliminar";
+                }
+            }
         }
 
         private void btnCancelarMarca_Click(object sender, EventArgs e)
@@ -49,27 +65,54 @@ namespace winform_app
         private void btnAceptarMarca_Click(object sender, EventArgs e)
         {
             Marca marca = new Marca();
-            MarcaNegocio negocio = new MarcaNegocio();
+            MarcaNegocio negocioMarca = new MarcaNegocio();
+
+            Categoria category = new Categoria();
+            CategoriaNegocio negocioCategoria = new CategoriaNegocio();
 
             try
             {
-                marca.Id = int.Parse(dgvAgregarMarca.SelectedRows[0].Cells["Id"].Value.ToString());
-                marca.Descripcion = txtAgregarMarca.Text;
+                if (!categoria)
+                {
+                    marca.Id = int.Parse(dgvAgregarMarca.SelectedRows[0].Cells["Id"].Value.ToString());
+                    marca.Descripcion = txtAgregarMarca.Text;
 
-                if(modificada == true && eliminada == true)
-                {
-                    negocio.eliminar(marca);
-                    MessageBox.Show("¡Marca eliminada exitosamente!");
-                }
-                else if(modificada == true)
-                {
-                    negocio.modificar(marca);
-                    MessageBox.Show("¡Marca modificada exitosamente!");
+                    if (modificada && eliminada)
+                    {
+                        negocioMarca.eliminar(marca);
+                        MessageBox.Show("¡Marca eliminada exitosamente!");
+                    }
+                    else if (modificada)
+                    {
+                        negocioMarca.modificar(marca);
+                        MessageBox.Show("¡Marca modificada exitosamente!");
+                    }
+                    else
+                    {
+                        negocioMarca.agegar(marca);
+                        MessageBox.Show("¡Marca agregada exitosamente!");
+                    }
                 }
                 else
                 {
-                    negocio.agegar(marca);
-                    MessageBox.Show("¡Marca agregada exitosamente!");
+                    category.Id = int.Parse(dgvAgregarMarca.SelectedRows[0].Cells["Id"].Value.ToString());
+                    category.Descripcion = txtAgregarMarca.Text;
+
+                    if (modificada && eliminada)
+                    {
+                        negocioCategoria.eliminar(category);
+                        MessageBox.Show("¡Marca eliminada exitosamente!");
+                    }
+                    else if (modificada)
+                    {
+                        negocioCategoria.modificar(category);
+                        MessageBox.Show("¡Marca modificada exitosamente!");
+                    }
+                    else
+                    {
+                        negocioCategoria.agegar(category);
+                        MessageBox.Show("¡Marca agregada exitosamente!");
+                    }
                 }
 
                 Close();    
@@ -83,20 +126,55 @@ namespace winform_app
         private void frmAgregarMarca_Load(object sender, EventArgs e)
         {
             MarcaNegocio negocio = new MarcaNegocio();
-            listaMarcas = negocio.listar();
-            dgvAgregarMarca.DataSource = listaMarcas;
+            CategoriaNegocio category = new CategoriaNegocio();
+
+            if (!categoria)
+            {
+                listaMarcas = negocio.listar();
+                dgvAgregarMarca.DataSource = listaMarcas;
+            }
+            else
+            {
+                listaCategorias = category.listar();
+                dgvAgregarMarca.DataSource = listaCategorias;
+            }            
+            
             ocultarColumnaId();
         }
 
         private void dgvAgregarMarca_SelectionChanged(object sender, EventArgs e)
         {
-            Marca seleccionado = new Marca();
+            Marca marcaSelect = new Marca();
+            Categoria catSelect = new Categoria();
+
             try
             {
-                if(modificada == true)
-                {                    
-                    seleccionado = (Marca)dgvAgregarMarca.CurrentRow.DataBoundItem;
-                    txtAgregarMarca.Text = seleccionado.Descripcion.ToString();                    
+                if(modificada || eliminada)
+                {
+                    if(!categoria)
+                    {
+                        if(dgvAgregarMarca.CurrentRow != null)
+                        {
+                            marcaSelect = (Marca)dgvAgregarMarca.CurrentRow.DataBoundItem;
+                            txtAgregarMarca.Text = marcaSelect.Descripcion.ToString();
+                        }
+                        else
+                        {
+                            txtAgregarMarca.Text = "";
+                        }
+                    }
+                    else
+                    {
+                        if (dgvAgregarMarca.CurrentRow != null)
+                        {
+                            catSelect = (Categoria)dgvAgregarMarca.CurrentRow.DataBoundItem;
+                            txtAgregarMarca.Text = catSelect.Descripcion.ToString();
+                        }
+                        else
+                        {
+                            txtAgregarMarca.Text = "";
+                        }
+                    }
                 }
             }
             catch(Exception ex)
@@ -113,15 +191,31 @@ namespace winform_app
         private void txtConsultarMarca_TextChanged(object sender, EventArgs e)
         {
             List<Marca> listaMarcasConsulta;
-            string filtro = txtConsultarMarca.Text;
-            
-            if(filtro != "")
-                listaMarcasConsulta = listaMarcas.FindAll(x => x.Descripcion.ToUpper().Contains(filtro.ToUpper()));
-            else           
-                listaMarcasConsulta = listaMarcas;
+            List<Categoria> listaCategoriaConsulta;
 
-            dgvAgregarMarca.DataSource = null;
-            dgvAgregarMarca.DataSource = listaMarcasConsulta;
+            string filtro = txtConsultarMarca.Text;
+
+            if (!categoria)
+            {
+                if(filtro != "")
+                    listaMarcasConsulta = listaMarcas.FindAll(x => x.Descripcion.ToUpper().Contains(filtro.ToUpper()));
+                else           
+                    listaMarcasConsulta = listaMarcas;
+
+                dgvAgregarMarca.DataSource = null;
+                dgvAgregarMarca.DataSource = listaMarcasConsulta;
+            }
+            else
+            {
+                if (filtro != "")
+                    listaCategoriaConsulta = listaCategorias.FindAll(x => x.Descripcion.ToUpper().Contains(filtro.ToUpper()));
+                else
+                    listaCategoriaConsulta = listaCategorias;
+
+                dgvAgregarMarca.DataSource = null;
+                dgvAgregarMarca.DataSource = listaCategoriaConsulta;
+            }
+
             ocultarColumnaId();
         }
     }

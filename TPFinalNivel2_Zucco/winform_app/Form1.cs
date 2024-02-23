@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -148,12 +149,57 @@ namespace winform_app
             }
         }
 
+        private bool validarBusqAvanzada()
+        {
+            if(cboCampo.SelectedIndex < 0)
+            {
+                MessageBox.Show("Seleccione el campo a filtrar por favor.");
+                return true;
+            }
+
+            if(cboCriterio.SelectedIndex < 0)
+            {
+                MessageBox.Show("Seleccione el criterio a filtrar por favor.");
+                return true;
+            }
+
+            if(cboCampo.SelectedItem.ToString() == "Precio")
+            {
+                if(!(soloNumeros(txtConsultaAvanzada.Text)))
+                {
+                    MessageBox.Show("Ingrese solamente números al trabajar con este campo por favor.");
+                    return true;
+                }
+            }
+
+            if (string.IsNullOrEmpty(txtConsultaAvanzada.Text))
+            {
+                MessageBox.Show("Ingresa una búsqueda por favor.");
+                return true;
+            }
+
+            return false;
+        }
+
+        private bool soloNumeros(string cadena)
+        {
+            foreach(char caracter in cadena)
+            {
+                if (!(char.IsNumber(caracter)))
+                    return false;
+            }
+                return true;
+        }
+
         private void btnConsultaAvanzada_Click(object sender, EventArgs e)
         {
             ArticuloNegocio negocio = new ArticuloNegocio();
 
             try
             {
+                if(validarBusqAvanzada())
+                    return;
+
                 string campo = cboCampo.SelectedItem.ToString();
                 string criterio = cboCriterio.SelectedItem.ToString();
                 string filtro = txtConsultaAvanzada.Text;
@@ -241,7 +287,11 @@ namespace winform_app
 
         private void btnAgregarMarca_Click(object sender, EventArgs e)
         {
-            frmAgregarMarca alta = new frmAgregarMarca();
+            bool modificar = false;
+            bool eliminar = false;
+            bool categoria = false;
+            
+            frmAgregarMarca alta = new frmAgregarMarca(modificar, eliminar, categoria);
             alta.ShowDialog();
 
             cargar();
@@ -249,9 +299,11 @@ namespace winform_app
 
         private void btnModificarMarca_Click(object sender, EventArgs e)
         {
-            bool situacion = true;
+            bool modificar = true;
+            bool eliminar = false;
+            bool categoria = false;
 
-            frmAgregarMarca alta = new frmAgregarMarca(situacion);
+            frmAgregarMarca alta = new frmAgregarMarca(modificar, eliminar, categoria);
             alta.ShowDialog();
 
             cargar();
@@ -259,10 +311,47 @@ namespace winform_app
 
         private void btnEliminarMarca_Click(object sender, EventArgs e)
         {
-            bool situacion = true;
+            bool modificar = false;
             bool eliminar = true;
+            bool categoria = false;
 
-            frmAgregarMarca alta = new frmAgregarMarca(situacion, eliminar);
+            frmAgregarMarca alta = new frmAgregarMarca(modificar, eliminar, categoria);
+            alta.ShowDialog();
+
+            cargar();
+        }
+
+        private void btnAgregarCategoria_Click(object sender, EventArgs e)
+        {
+            bool modificar = false;
+            bool eliminar = false;
+            bool categoria = true;
+
+            frmAgregarMarca alta = new frmAgregarMarca(modificar, eliminar, categoria);
+            alta.ShowDialog();
+
+            cargar();
+        }
+
+        private void btnModificarCategoria_Click(object sender, EventArgs e)
+        {
+            bool modificar = true;
+            bool eliminar = false;
+            bool categoria = true;
+
+            frmAgregarMarca alta = new frmAgregarMarca(modificar, eliminar, categoria);
+            alta.ShowDialog();
+
+            cargar();
+        }
+
+        private void eliminarToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            bool modificar = false;
+            bool eliminar = true;
+            bool categoria = true;
+
+            frmAgregarMarca alta = new frmAgregarMarca(modificar, eliminar, categoria);
             alta.ShowDialog();
 
             cargar();

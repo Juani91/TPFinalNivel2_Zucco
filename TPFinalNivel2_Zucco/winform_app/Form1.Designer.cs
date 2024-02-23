@@ -182,21 +182,21 @@
             // btnAgregarMarca
             // 
             this.btnAgregarMarca.Name = "btnAgregarMarca";
-            this.btnAgregarMarca.Size = new System.Drawing.Size(180, 26);
+            this.btnAgregarMarca.Size = new System.Drawing.Size(146, 26);
             this.btnAgregarMarca.Text = "Agregar";
             this.btnAgregarMarca.Click += new System.EventHandler(this.btnAgregarMarca_Click);
             // 
             // btnModificarMarca
             // 
             this.btnModificarMarca.Name = "btnModificarMarca";
-            this.btnModificarMarca.Size = new System.Drawing.Size(180, 26);
+            this.btnModificarMarca.Size = new System.Drawing.Size(146, 26);
             this.btnModificarMarca.Text = "Modificar";
             this.btnModificarMarca.Click += new System.EventHandler(this.btnModificarMarca_Click);
             // 
             // btnEliminarMarca
             // 
             this.btnEliminarMarca.Name = "btnEliminarMarca";
-            this.btnEliminarMarca.Size = new System.Drawing.Size(180, 26);
+            this.btnEliminarMarca.Size = new System.Drawing.Size(146, 26);
             this.btnEliminarMarca.Text = "Eliminar";
             this.btnEliminarMarca.Click += new System.EventHandler(this.btnEliminarMarca_Click);
             // 
@@ -215,18 +215,21 @@
             this.btnAgregarCategoria.Name = "btnAgregarCategoria";
             this.btnAgregarCategoria.Size = new System.Drawing.Size(146, 26);
             this.btnAgregarCategoria.Text = "Agregar";
+            this.btnAgregarCategoria.Click += new System.EventHandler(this.btnAgregarCategoria_Click);
             // 
             // btnModificarCategoria
             // 
             this.btnModificarCategoria.Name = "btnModificarCategoria";
             this.btnModificarCategoria.Size = new System.Drawing.Size(146, 26);
             this.btnModificarCategoria.Text = "Modificar";
+            this.btnModificarCategoria.Click += new System.EventHandler(this.btnModificarCategoria_Click);
             // 
             // eliminarToolStripMenuItem1
             // 
             this.eliminarToolStripMenuItem1.Name = "eliminarToolStripMenuItem1";
             this.eliminarToolStripMenuItem1.Size = new System.Drawing.Size(146, 26);
             this.eliminarToolStripMenuItem1.Text = "Eliminar";
+            this.eliminarToolStripMenuItem1.Click += new System.EventHandler(this.eliminarToolStripMenuItem1_Click);
             // 
             // txtConsultar
             // 

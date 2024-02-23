@@ -64,6 +64,7 @@ namespace negocio
         public void modificar(Marca modificada)
         {
             AccesoDatos datos = new AccesoDatos();
+
             try
             {
                 datos.setearConsulta("update MARCAS set Descripcion = @Descripcion where Id = @Id");                
