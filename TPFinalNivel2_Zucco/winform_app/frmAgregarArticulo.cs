@@ -36,6 +36,26 @@ namespace winform_app
             Close();
         }
 
+        private bool validarAgregarArticulo()
+        {
+            if(txtCodigo.Text == "" || txtDescripcion.Text == "" || txtModelo.Text == "" || txtPrecio.Text == "" || cboMarca.SelectedIndex == -1 || cboCategoria.SelectedIndex == -1)
+            {
+                MessageBox.Show("Quedan campos sin completar.");
+                return true;
+            }
+
+            if(txtImagenUrl.Text == "")
+            {
+                DialogResult seleccion = MessageBox.Show("Desea dejar sin imágen al Artículo por el momento?", "Artículo sin imagen", MessageBoxButtons.YesNo);
+                if (seleccion == DialogResult.No)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             // Articulo artic = new Articulo();
@@ -43,6 +63,11 @@ namespace winform_app
 
             try
             {
+                if(validarAgregarArticulo())
+                {
+                    return;
+                }
+
                 if(articulo == null)
                     articulo = new Articulo();
 
@@ -72,16 +97,20 @@ namespace winform_app
 
                 Close();
             }
+            catch (FormatException)
+            {
+                MessageBox.Show("El campo precio contiene caracteres erróneos.");
+            }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
-            }
+            }            
         }
 
         private void frmAgregarArticulo_Load(object sender, EventArgs e)
         {
             MarcaNegocio marca = new MarcaNegocio();
-            CategoriaNegocio categoria = new CategoriaNegocio();
+            CategoriaNegocio categoria = new CategoriaNegocio();            
 
             try
             {
@@ -91,6 +120,9 @@ namespace winform_app
                 cboCategoria.DataSource = categoria.listar();
                 cboCategoria.ValueMember = "Id";
                 cboCategoria.DisplayMember = "Descripcion";
+
+                cboCategoria.SelectedIndex = -1;
+                cboMarca.SelectedIndex = -1;
 
                 if (articulo != null)
                 {

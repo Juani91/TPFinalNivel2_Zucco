@@ -80,11 +80,23 @@ namespace winform_app
         private void btnModificar_Click(object sender, EventArgs e)
         {
             Articulo seleccionado;
-            seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+            try
+            {
+                if (dgvArticulos.CurrentRow != null)
+                {
+                    seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+                    frmAgregarArticulo modificar = new frmAgregarArticulo(seleccionado);
+                    modificar.ShowDialog();
+                    cargar();
+                }
+                else
+                    MessageBox.Show("Selecciona un artículo a modificar.");
 
-            frmAgregarArticulo modificar = new frmAgregarArticulo(seleccionado);
-            modificar.ShowDialog();
-            cargar();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -94,13 +106,18 @@ namespace winform_app
 
             try
             {
-                DialogResult seleccion = MessageBox.Show("¿De verdad deseas eliminar este artículo?", "!Eliminando artículo!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                if(seleccion == DialogResult.Yes)
+                if(dgvArticulos.CurrentRow != null)
                 {
-                    seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
-                    negocio.eliminar(seleccionado.Id);
-                    cargar();
+                    DialogResult seleccion = MessageBox.Show("¿De verdad deseas eliminar este artículo?", "!Eliminando artículo!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if(seleccion == DialogResult.Yes)
+                    {
+                        seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+                        negocio.eliminar(seleccionado.Id);
+                        cargar();
+                    }
                 }
+                else
+                    MessageBox.Show("Selecciona un artículo a eliminar.");
             }
             catch(Exception ex)
             {
@@ -251,6 +268,7 @@ namespace winform_app
         private void btnFinConsultaAvanzada_Click(object sender, EventArgs e)
         {
             cerrarConsultaAvanzada();
+            cargar();
         }
 
         private void cerrarConsulta()

@@ -273,7 +273,7 @@
             this.panConsultaAvanzada.Controls.Add(this.cboCampo);
             this.panConsultaAvanzada.Controls.Add(this.txtConsultaAvanzada);
             this.panConsultaAvanzada.Controls.Add(this.lblCampo);
-            this.panConsultaAvanzada.Location = new System.Drawing.Point(12, 332);
+            this.panConsultaAvanzada.Location = new System.Drawing.Point(84, 188);
             this.panConsultaAvanzada.Name = "panConsultaAvanzada";
             this.panConsultaAvanzada.Size = new System.Drawing.Size(830, 73);
             this.panConsultaAvanzada.TabIndex = 6;
