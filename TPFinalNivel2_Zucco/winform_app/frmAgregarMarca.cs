@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -18,7 +19,7 @@ namespace winform_app
         private List<Categoria> listaCategorias;
 
         bool modificada = false;
-        bool eliminada = false; // ESTO HACE FALTA??? Creo que sí.. para trabajar con las funciones de manera global
+        bool eliminada = false;
         bool categoria = false;
 
         public frmAgregarMarca(bool modificar, bool eliminar, bool esCategoria)
@@ -26,7 +27,7 @@ namespace winform_app
             InitializeComponent();
 
             modificada = modificar;
-            eliminada = eliminar; // ESTO HACE FALTA???
+            eliminada = eliminar;
             categoria = esCategoria;
 
             if(!esCategoria)
@@ -36,7 +37,7 @@ namespace winform_app
                     Text = "Modificar Marca";
                     lblAgregarMarca.Text = "Modificar";
                 }
-                else
+                else if (eliminar)
                 {
                     Text = "Eliminar Marca";
                     lblAgregarMarca.Text = "Eliminar";
@@ -49,7 +50,7 @@ namespace winform_app
                     Text = "Modificar Categoría";
                     lblAgregarMarca.Text = "Modificar";
                 }
-                else
+                else if (eliminar)
                 {
                     Text = "Eliminar Categoría";
                     lblAgregarMarca.Text = "Eliminar";
@@ -62,6 +63,11 @@ namespace winform_app
             Close();
         }
 
+        public void consultarData()
+        {
+                     
+        }
+
         private void btnAceptarMarca_Click(object sender, EventArgs e)
         {
             Marca marca = new Marca();
@@ -70,6 +76,8 @@ namespace winform_app
             Categoria category = new Categoria();
             CategoriaNegocio negocioCategoria = new CategoriaNegocio();
 
+            frmArticulos formularioPrincipal = new frmArticulos();
+
             try
             {
                 if (!categoria)
@@ -77,10 +85,31 @@ namespace winform_app
                     marca.Id = int.Parse(dgvAgregarMarca.SelectedRows[0].Cells["Id"].Value.ToString());
                     marca.Descripcion = txtAgregarMarca.Text;
 
-                    if (modificada && eliminada)
+                    if (eliminada)
                     {
-                        negocioMarca.eliminar(marca);
-                        MessageBox.Show("¡Marca eliminada exitosamente!");
+
+                        string buscar = txtAgregarMarca.Text;
+
+                        bool existe = formularioPrincipal.consultarDataGridView(buscar); // VER POR QUÉ SIEMPRE DA FALSE! 
+
+                        if (existe)
+                        {
+                            MessageBox.Show("¡No puedes eliminar una marca que está siendo utilizada!", "Alerta!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return;
+                        }
+                        else
+                        {
+                            DialogResult seleccion = MessageBox.Show("La categoría se eliminará permanentemente. ¿Está seguro de querer eliminarla?", "Alerta!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                            if (seleccion == DialogResult.Yes)
+                            {
+                                negocioMarca.eliminar(marca);
+                                MessageBox.Show("¡Marca eliminada exitosamente!");
+                            }
+                            else
+                            {
+                                return;
+                            }
+                        }
                     }
                     else if (modificada)
                     {
@@ -89,8 +118,35 @@ namespace winform_app
                     }
                     else
                     {
-                        negocioMarca.agegar(marca);
-                        MessageBox.Show("¡Marca agregada exitosamente!");
+                        bool existe = false;
+
+                        foreach (DataGridViewRow fila in dgvAgregarMarca.Rows)
+                        {
+                            DataGridViewCell celda = fila.Cells["Descripcion"];
+
+                            if(celda.Value != null && celda.Value.ToString().ToUpper().Contains(txtAgregarMarca.Text.ToUpper()))
+                            {
+                                existe = true;
+                            }
+                        }                
+                        if (existe)
+                        {
+                            DialogResult seleccion = MessageBox.Show("!Esta marca ya existe! ¿Desea agregarla igualmente?", "Alerta!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                            if(seleccion == DialogResult.Yes)
+                            {
+                                negocioMarca.agegar(marca);
+                                MessageBox.Show("¡Marca agregada exitosamente!");
+                            }
+                            else
+                            {
+                                return;
+                            }
+                        }
+                        else
+                        {
+                            negocioMarca.agegar(marca);
+                            MessageBox.Show("¡Marca agregada exitosamente!");
+                        }
                     }
                 }
                 else
@@ -98,20 +154,56 @@ namespace winform_app
                     category.Id = int.Parse(dgvAgregarMarca.SelectedRows[0].Cells["Id"].Value.ToString());
                     category.Descripcion = txtAgregarMarca.Text;
 
-                    if (modificada && eliminada)
+                    if (eliminada)
                     {
-                        negocioCategoria.eliminar(category);
-                        MessageBox.Show("¡Marca eliminada exitosamente!");
+                        DialogResult seleccion = MessageBox.Show("La categoría se eliminará permanentemente. ¿Está seguro de querer eliminarla?", "Alerta!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                        if (seleccion == DialogResult.Yes)
+                        {
+                            negocioCategoria.eliminar(category);
+                            MessageBox.Show("¡Categoría eliminada exitosamente!");
+                        }
+                        else
+                        {
+                            return;
+                        }
+
                     }
                     else if (modificada)
                     {
                         negocioCategoria.modificar(category);
-                        MessageBox.Show("¡Marca modificada exitosamente!");
+                        MessageBox.Show("¡Categoría modificada exitosamente!");
                     }
                     else
                     {
-                        negocioCategoria.agegar(category);
-                        MessageBox.Show("¡Marca agregada exitosamente!");
+                        bool existe = false;
+
+                        foreach (DataGridViewRow fila in dgvAgregarMarca.Rows)
+                        {
+                            DataGridViewCell celda = fila.Cells["Descripcion"];
+
+                            if (celda.Value != null && celda.Value.ToString().ToUpper().Contains(txtAgregarMarca.Text.ToUpper()))
+                            {
+                                existe = true;
+                            }
+                        }
+                        if (existe)
+                        {
+                            DialogResult seleccion = MessageBox.Show("!Esta categoría ya existe! ¿Desea agregarla igualmente?", "Alerta!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                            if (seleccion == DialogResult.Yes)
+                            {
+                                negocioCategoria.agegar(category);
+                                MessageBox.Show("¡Categoría agregada exitosamente!");
+                            }
+                            else
+                            {
+                                return;
+                            }
+                        }
+                        else
+                        {
+                            negocioCategoria.agegar(category);
+                            MessageBox.Show("¡Categoría agregada exitosamente!");
+                        }
                     }
                 }
 

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAgregarMarca));
             this.btnAceptarMarca = new System.Windows.Forms.Button();
             this.dgvAgregarMarca = new System.Windows.Forms.DataGridView();
             this.txtAgregarMarca = new System.Windows.Forms.TextBox();
@@ -43,7 +44,7 @@
             this.btnAceptarMarca.Location = new System.Drawing.Point(203, 174);
             this.btnAceptarMarca.Name = "btnAceptarMarca";
             this.btnAceptarMarca.Size = new System.Drawing.Size(75, 23);
-            this.btnAceptarMarca.TabIndex = 0;
+            this.btnAceptarMarca.TabIndex = 3;
             this.btnAceptarMarca.Text = "Aceptar";
             this.btnAceptarMarca.UseVisualStyleBackColor = true;
             this.btnAceptarMarca.Click += new System.EventHandler(this.btnAceptarMarca_Click);
@@ -60,7 +61,8 @@
             this.dgvAgregarMarca.RowHeadersVisible = false;
             this.dgvAgregarMarca.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvAgregarMarca.Size = new System.Drawing.Size(149, 218);
-            this.dgvAgregarMarca.TabIndex = 1;
+            this.dgvAgregarMarca.TabIndex = 0;
+            this.dgvAgregarMarca.TabStop = false;
             this.dgvAgregarMarca.SelectionChanged += new System.EventHandler(this.dgvAgregarMarca_SelectionChanged);
             // 
             // txtAgregarMarca
@@ -72,10 +74,10 @@
             // 
             // txtConsultarMarca
             // 
-            this.txtConsultarMarca.Location = new System.Drawing.Point(135, 22);
+            this.txtConsultarMarca.Location = new System.Drawing.Point(157, 22);
             this.txtConsultarMarca.Name = "txtConsultarMarca";
             this.txtConsultarMarca.Size = new System.Drawing.Size(168, 20);
-            this.txtConsultarMarca.TabIndex = 3;
+            this.txtConsultarMarca.TabIndex = 1;
             this.txtConsultarMarca.TextChanged += new System.EventHandler(this.txtConsultarMarca_TextChanged);
             // 
             // btnCancelarMarca
@@ -91,19 +93,21 @@
             // lblAgregarMarca
             // 
             this.lblAgregarMarca.AutoSize = true;
-            this.lblAgregarMarca.Location = new System.Drawing.Point(264, 102);
+            this.lblAgregarMarca.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAgregarMarca.Location = new System.Drawing.Point(257, 102);
             this.lblAgregarMarca.Name = "lblAgregarMarca";
-            this.lblAgregarMarca.Size = new System.Drawing.Size(44, 13);
-            this.lblAgregarMarca.TabIndex = 5;
+            this.lblAgregarMarca.Size = new System.Drawing.Size(59, 17);
+            this.lblAgregarMarca.TabIndex = 0;
             this.lblAgregarMarca.Text = "Agregar";
             // 
             // lblConsultarMarca
             // 
             this.lblConsultarMarca.AutoSize = true;
-            this.lblConsultarMarca.Location = new System.Drawing.Point(67, 25);
+            this.lblConsultarMarca.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblConsultarMarca.Location = new System.Drawing.Point(83, 23);
             this.lblConsultarMarca.Name = "lblConsultarMarca";
-            this.lblConsultarMarca.Size = new System.Drawing.Size(51, 13);
-            this.lblConsultarMarca.TabIndex = 6;
+            this.lblConsultarMarca.Size = new System.Drawing.Size(68, 17);
+            this.lblConsultarMarca.TabIndex = 0;
             this.lblConsultarMarca.Text = "Consultar";
             // 
             // frmAgregarMarca
@@ -119,11 +123,11 @@
             this.Controls.Add(this.dgvAgregarMarca);
             this.Controls.Add(this.btnAceptarMarca);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.MinimizeBox = false;
             this.Name = "frmAgregarMarca";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Nueva Marca";
+            this.Text = "Agregar Marca";
             this.Load += new System.EventHandler(this.frmAgregarMarca_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAgregarMarca)).EndInit();
             this.ResumeLayout(false);

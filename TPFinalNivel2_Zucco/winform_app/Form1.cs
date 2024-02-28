@@ -30,7 +30,7 @@ namespace winform_app
                 listaArticulos = negocio.listar();
                 dgvArticulos.DataSource = listaArticulos;
                 ocultarColumnas();
-                cargarImagen(listaArticulos[0].ImagenUrl);
+                cargarImagen(listaArticulos[0].ImagenUrl);                
             }
             catch (Exception ex)
             {
@@ -40,7 +40,7 @@ namespace winform_app
 
         private void frmArticulos_Load(object sender, EventArgs e)
         {
-            cargar();
+            cargar();            
 
             cboCampo.Items.Add("Marca");
             cboCampo.Items.Add("Modelo");
@@ -362,8 +362,7 @@ namespace winform_app
 
             cargar();
         }
-
-        private void eliminarToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void btnEliminarCategoria_Click(object sender, EventArgs e)
         {
             bool modificar = false;
             bool eliminar = true;
@@ -373,6 +372,35 @@ namespace winform_app
             alta.ShowDialog();
 
             cargar();
+        }
+
+        private void dgvArticulos_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            dgvArticulos.Columns["Codigo"].Width = 50;
+            dgvArticulos.Columns["Nombre"].Width = 100;
+            dgvArticulos.Columns["Descripcion"].Width = 150;
+            dgvArticulos.Columns["Precio"].Width = 75;
+            dgvArticulos.Columns["Marca"].Width = 100;
+            dgvArticulos.Columns["Categoria"].Width = 100;
+
+            dgvArticulos.Columns["Precio"].DefaultCellStyle.Format = "N2";
+        }
+
+        public bool consultarDataGridView(string palabra)
+        {
+            bool existe = false;
+
+            foreach (DataGridViewRow fila in dgvArticulos.Rows)
+            {
+                DataGridViewCell celda = fila.Cells["Marca"];
+
+                if (celda.Value != null && celda.Value.ToString().ToUpper().Contains(palabra.ToUpper()))
+                {
+                    existe = true;
+                }
+            }
+
+            return existe;
         }
     }
 }

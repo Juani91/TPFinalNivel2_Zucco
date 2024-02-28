@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using dominio;
 using negocio;
 using System.Configuration;
+using System.Data.SqlClient;
 
 namespace winform_app
 {
@@ -96,6 +97,10 @@ namespace winform_app
                 }
 
                 Close();
+            }
+            catch (SqlException)
+            {
+                MessageBox.Show("Puede que el contenido del campo descripción sea demasiado extenso. Evite exceder los 150 caracteres.");
             }
             catch (FormatException)
             {

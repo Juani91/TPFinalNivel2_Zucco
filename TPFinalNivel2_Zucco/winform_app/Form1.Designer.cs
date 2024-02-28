@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmArticulos));
             this.dgvArticulos = new System.Windows.Forms.DataGridView();
             this.pbxArticulo = new System.Windows.Forms.PictureBox();
             this.lblConsultar = new System.Windows.Forms.Label();
@@ -46,7 +47,7 @@
             this.categoríaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnAgregarCategoria = new System.Windows.Forms.ToolStripMenuItem();
             this.btnModificarCategoria = new System.Windows.Forms.ToolStripMenuItem();
-            this.eliminarToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnEliminarCategoria = new System.Windows.Forms.ToolStripMenuItem();
             this.txtConsultar = new System.Windows.Forms.TextBox();
             this.panConsultaSimple = new System.Windows.Forms.Panel();
             this.btnFinConsultaSimple = new System.Windows.Forms.Button();
@@ -60,11 +61,13 @@
             this.cboCampo = new System.Windows.Forms.ComboBox();
             this.txtConsultaAvanzada = new System.Windows.Forms.TextBox();
             this.lblCampo = new System.Windows.Forms.Label();
+            this.panelPictureBox = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxArticulo)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.panConsultaSimple.SuspendLayout();
             this.panConsultaAvanzada.SuspendLayout();
+            this.panelPictureBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgvArticulos
@@ -77,15 +80,16 @@
             this.dgvArticulos.MultiSelect = false;
             this.dgvArticulos.Name = "dgvArticulos";
             this.dgvArticulos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvArticulos.Size = new System.Drawing.Size(696, 288);
+            this.dgvArticulos.Size = new System.Drawing.Size(638, 288);
             this.dgvArticulos.TabIndex = 0;
+            this.dgvArticulos.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvArticulos_DataBindingComplete);
             this.dgvArticulos.SelectionChanged += new System.EventHandler(this.dgvArticulos_SelectionChanged);
             // 
             // pbxArticulo
             // 
-            this.pbxArticulo.Location = new System.Drawing.Point(726, 70);
+            this.pbxArticulo.Location = new System.Drawing.Point(3, 3);
             this.pbxArticulo.Name = "pbxArticulo";
-            this.pbxArticulo.Size = new System.Drawing.Size(220, 220);
+            this.pbxArticulo.Size = new System.Drawing.Size(222, 229);
             this.pbxArticulo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbxArticulo.TabIndex = 1;
             this.pbxArticulo.TabStop = false;
@@ -109,27 +113,27 @@
             this.btnEliminar});
             this.articuloToolStripMenuItem.Name = "articuloToolStripMenuItem";
             this.articuloToolStripMenuItem.Size = new System.Drawing.Size(76, 25);
-            this.articuloToolStripMenuItem.Text = "Artículo";
+            this.articuloToolStripMenuItem.Text = "&Artículo";
             // 
             // btnAgregar
             // 
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(146, 26);
-            this.btnAgregar.Text = "Agregar";
+            this.btnAgregar.Text = "&Agregar";
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // btnModificar
             // 
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(146, 26);
-            this.btnModificar.Text = "Modificar";
+            this.btnModificar.Text = "Mo&dificar";
             this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
             // btnEliminar
             // 
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(146, 26);
-            this.btnEliminar.Text = "Eliminar";
+            this.btnEliminar.Text = "&Eliminar";
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // buscarToolStripMenuItem
@@ -139,20 +143,20 @@
             this.búsquedaAvanzadaToolStripMenuItem});
             this.buscarToolStripMenuItem.Name = "buscarToolStripMenuItem";
             this.buscarToolStripMenuItem.Size = new System.Drawing.Size(83, 25);
-            this.buscarToolStripMenuItem.Text = "Consulta";
+            this.buscarToolStripMenuItem.Text = "Con&sulta";
             // 
             // consultaSimpleToolStripMenuItem
             // 
             this.consultaSimpleToolStripMenuItem.Name = "consultaSimpleToolStripMenuItem";
             this.consultaSimpleToolStripMenuItem.Size = new System.Drawing.Size(212, 26);
-            this.consultaSimpleToolStripMenuItem.Text = "Consulta Simple";
+            this.consultaSimpleToolStripMenuItem.Text = "Consulta &Simple";
             this.consultaSimpleToolStripMenuItem.Click += new System.EventHandler(this.consultaSimpleToolStripMenuItem_Click);
             // 
             // búsquedaAvanzadaToolStripMenuItem
             // 
             this.búsquedaAvanzadaToolStripMenuItem.Name = "búsquedaAvanzadaToolStripMenuItem";
             this.búsquedaAvanzadaToolStripMenuItem.Size = new System.Drawing.Size(212, 26);
-            this.búsquedaAvanzadaToolStripMenuItem.Text = "Consulta Avanzada";
+            this.búsquedaAvanzadaToolStripMenuItem.Text = "Consulta &Avanzada";
             this.búsquedaAvanzadaToolStripMenuItem.Click += new System.EventHandler(this.búsquedaAvanzadaToolStripMenuItem_Click);
             // 
             // menuStrip1
@@ -165,8 +169,8 @@
             this.buscarToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(958, 29);
-            this.menuStrip1.TabIndex = 2;
+            this.menuStrip1.Size = new System.Drawing.Size(923, 29);
+            this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // marcaToolStripMenuItem
@@ -177,27 +181,27 @@
             this.btnEliminarMarca});
             this.marcaToolStripMenuItem.Name = "marcaToolStripMenuItem";
             this.marcaToolStripMenuItem.Size = new System.Drawing.Size(65, 25);
-            this.marcaToolStripMenuItem.Text = "Marca";
+            this.marcaToolStripMenuItem.Text = "M&arca";
             // 
             // btnAgregarMarca
             // 
             this.btnAgregarMarca.Name = "btnAgregarMarca";
             this.btnAgregarMarca.Size = new System.Drawing.Size(146, 26);
-            this.btnAgregarMarca.Text = "Agregar";
+            this.btnAgregarMarca.Text = "&Agregar";
             this.btnAgregarMarca.Click += new System.EventHandler(this.btnAgregarMarca_Click);
             // 
             // btnModificarMarca
             // 
             this.btnModificarMarca.Name = "btnModificarMarca";
             this.btnModificarMarca.Size = new System.Drawing.Size(146, 26);
-            this.btnModificarMarca.Text = "Modificar";
+            this.btnModificarMarca.Text = "Mo&dificar";
             this.btnModificarMarca.Click += new System.EventHandler(this.btnModificarMarca_Click);
             // 
             // btnEliminarMarca
             // 
             this.btnEliminarMarca.Name = "btnEliminarMarca";
             this.btnEliminarMarca.Size = new System.Drawing.Size(146, 26);
-            this.btnEliminarMarca.Text = "Eliminar";
+            this.btnEliminarMarca.Text = "&Eliminar";
             this.btnEliminarMarca.Click += new System.EventHandler(this.btnEliminarMarca_Click);
             // 
             // categoríaToolStripMenuItem
@@ -205,31 +209,31 @@
             this.categoríaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnAgregarCategoria,
             this.btnModificarCategoria,
-            this.eliminarToolStripMenuItem1});
+            this.btnEliminarCategoria});
             this.categoríaToolStripMenuItem.Name = "categoríaToolStripMenuItem";
             this.categoríaToolStripMenuItem.Size = new System.Drawing.Size(89, 25);
-            this.categoríaToolStripMenuItem.Text = "Categoría";
+            this.categoríaToolStripMenuItem.Text = "&Categoría";
             // 
             // btnAgregarCategoria
             // 
             this.btnAgregarCategoria.Name = "btnAgregarCategoria";
-            this.btnAgregarCategoria.Size = new System.Drawing.Size(146, 26);
-            this.btnAgregarCategoria.Text = "Agregar";
+            this.btnAgregarCategoria.Size = new System.Drawing.Size(180, 26);
+            this.btnAgregarCategoria.Text = "&Agregar";
             this.btnAgregarCategoria.Click += new System.EventHandler(this.btnAgregarCategoria_Click);
             // 
             // btnModificarCategoria
             // 
             this.btnModificarCategoria.Name = "btnModificarCategoria";
-            this.btnModificarCategoria.Size = new System.Drawing.Size(146, 26);
-            this.btnModificarCategoria.Text = "Modificar";
+            this.btnModificarCategoria.Size = new System.Drawing.Size(180, 26);
+            this.btnModificarCategoria.Text = "Mo&dificar";
             this.btnModificarCategoria.Click += new System.EventHandler(this.btnModificarCategoria_Click);
             // 
-            // eliminarToolStripMenuItem1
+            // btnEliminarCategoria
             // 
-            this.eliminarToolStripMenuItem1.Name = "eliminarToolStripMenuItem1";
-            this.eliminarToolStripMenuItem1.Size = new System.Drawing.Size(146, 26);
-            this.eliminarToolStripMenuItem1.Text = "Eliminar";
-            this.eliminarToolStripMenuItem1.Click += new System.EventHandler(this.eliminarToolStripMenuItem1_Click);
+            this.btnEliminarCategoria.Name = "btnEliminarCategoria";
+            this.btnEliminarCategoria.Size = new System.Drawing.Size(180, 26);
+            this.btnEliminarCategoria.Text = "&Eliminar";
+            this.btnEliminarCategoria.Click += new System.EventHandler(this.btnEliminarCategoria_Click);
             // 
             // txtConsultar
             // 
@@ -273,10 +277,10 @@
             this.panConsultaAvanzada.Controls.Add(this.cboCampo);
             this.panConsultaAvanzada.Controls.Add(this.txtConsultaAvanzada);
             this.panConsultaAvanzada.Controls.Add(this.lblCampo);
-            this.panConsultaAvanzada.Location = new System.Drawing.Point(84, 188);
+            this.panConsultaAvanzada.Location = new System.Drawing.Point(12, 332);
             this.panConsultaAvanzada.Name = "panConsultaAvanzada";
             this.panConsultaAvanzada.Size = new System.Drawing.Size(830, 73);
-            this.panConsultaAvanzada.TabIndex = 6;
+            this.panConsultaAvanzada.TabIndex = 1;
             this.panConsultaAvanzada.Visible = false;
             // 
             // lblConsultaAvanzada
@@ -376,17 +380,27 @@
             this.lblCampo.Text = "Campo";
             this.lblCampo.Visible = false;
             // 
+            // panelPictureBox
+            // 
+            this.panelPictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelPictureBox.Controls.Add(this.pbxArticulo);
+            this.panelPictureBox.Location = new System.Drawing.Point(672, 64);
+            this.panelPictureBox.Name = "panelPictureBox";
+            this.panelPictureBox.Size = new System.Drawing.Size(230, 237);
+            this.panelPictureBox.TabIndex = 6;
+            // 
             // frmArticulos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(958, 339);
+            this.ClientSize = new System.Drawing.Size(923, 339);
+            this.Controls.Add(this.panelPictureBox);
             this.Controls.Add(this.panConsultaAvanzada);
             this.Controls.Add(this.panConsultaSimple);
-            this.Controls.Add(this.pbxArticulo);
             this.Controls.Add(this.dgvArticulos);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.Name = "frmArticulos";
@@ -401,6 +415,7 @@
             this.panConsultaSimple.PerformLayout();
             this.panConsultaAvanzada.ResumeLayout(false);
             this.panConsultaAvanzada.PerformLayout();
+            this.panelPictureBox.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -439,7 +454,8 @@
         private System.Windows.Forms.ToolStripMenuItem categoríaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem btnAgregarCategoria;
         private System.Windows.Forms.ToolStripMenuItem btnModificarCategoria;
-        private System.Windows.Forms.ToolStripMenuItem eliminarToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem btnEliminarCategoria;
+        private System.Windows.Forms.Panel panelPictureBox;
     }
 }
 
