@@ -217,21 +217,21 @@
             // btnAgregarCategoria
             // 
             this.btnAgregarCategoria.Name = "btnAgregarCategoria";
-            this.btnAgregarCategoria.Size = new System.Drawing.Size(180, 26);
+            this.btnAgregarCategoria.Size = new System.Drawing.Size(146, 26);
             this.btnAgregarCategoria.Text = "&Agregar";
             this.btnAgregarCategoria.Click += new System.EventHandler(this.btnAgregarCategoria_Click);
             // 
             // btnModificarCategoria
             // 
             this.btnModificarCategoria.Name = "btnModificarCategoria";
-            this.btnModificarCategoria.Size = new System.Drawing.Size(180, 26);
+            this.btnModificarCategoria.Size = new System.Drawing.Size(146, 26);
             this.btnModificarCategoria.Text = "Mo&dificar";
             this.btnModificarCategoria.Click += new System.EventHandler(this.btnModificarCategoria_Click);
             // 
             // btnEliminarCategoria
             // 
             this.btnEliminarCategoria.Name = "btnEliminarCategoria";
-            this.btnEliminarCategoria.Size = new System.Drawing.Size(180, 26);
+            this.btnEliminarCategoria.Size = new System.Drawing.Size(146, 26);
             this.btnEliminarCategoria.Text = "&Eliminar";
             this.btnEliminarCategoria.Click += new System.EventHandler(this.btnEliminarCategoria_Click);
             // 

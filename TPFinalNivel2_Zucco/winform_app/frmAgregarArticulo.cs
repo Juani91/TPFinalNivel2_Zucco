@@ -41,13 +41,13 @@ namespace winform_app
         {
             if(txtCodigo.Text == "" || txtDescripcion.Text == "" || txtModelo.Text == "" || txtPrecio.Text == "" || cboMarca.SelectedIndex == -1 || cboCategoria.SelectedIndex == -1)
             {
-                MessageBox.Show("Quedan campos sin completar.");
+                MessageBox.Show("¡Quedan campos sin completar!");
                 return true;
             }
 
             if(txtImagenUrl.Text == "")
             {
-                DialogResult seleccion = MessageBox.Show("Desea dejar sin imágen al Artículo por el momento?", "Artículo sin imagen", MessageBoxButtons.YesNo);
+                DialogResult seleccion = MessageBox.Show("¿Desea dejar sin imágen al artículo por el momento?", "Artículo sin imagen", MessageBoxButtons.YesNo);
                 if (seleccion == DialogResult.No)
                 {
                     return true;

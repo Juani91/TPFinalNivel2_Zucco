@@ -108,7 +108,7 @@ namespace winform_app
             {
                 if(dgvArticulos.CurrentRow != null)
                 {
-                    DialogResult seleccion = MessageBox.Show("¿De verdad deseas eliminar este artículo?", "!Eliminando artículo!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    DialogResult seleccion = MessageBox.Show("El artículo se eliminará permanentemente. ¿Está seguro de querer eliminarlo?", "!Eliminando artículo!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                     if(seleccion == DialogResult.Yes)
                     {
                         seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
@@ -230,6 +230,7 @@ namespace winform_app
         private void consultaSimpleToolStripMenuItem_Click(object sender, EventArgs e)
         {
             cerrarConsultaAvanzada();
+            cargar();
 
             txtConsultar.Visible = true;
             lblConsultar.Visible = true;
@@ -384,23 +385,6 @@ namespace winform_app
             dgvArticulos.Columns["Categoria"].Width = 100;
 
             dgvArticulos.Columns["Precio"].DefaultCellStyle.Format = "N2";
-        }
-
-        public bool consultarDataGridView(string palabra)
-        {
-            bool existe = false;
-
-            foreach (DataGridViewRow fila in dgvArticulos.Rows)
-            {
-                DataGridViewCell celda = fila.Cells["Marca"];
-
-                if (celda.Value != null && celda.Value.ToString().ToUpper().Contains(palabra.ToUpper()))
-                {
-                    existe = true;
-                }
-            }
-
-            return existe;
         }
     }
 }
